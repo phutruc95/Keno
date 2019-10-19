@@ -1,0 +1,5 @@
+D:\MyProject\Keno\Keno.Model\bin\Debug\Keno.Model.dll
+D:\MyProject\Keno\Keno.Model\bin\Debug\Keno.Model.pdb
+D:\MyProject\Keno\Keno.Model\obj\Debug\Keno.Model.csprojResolveAssemblyReference.cache
+D:\MyProject\Keno\Keno.Model\obj\Debug\Keno.Model.dll
+D:\MyProject\Keno\Keno.Model\obj\Debug\Keno.Model.pdb
