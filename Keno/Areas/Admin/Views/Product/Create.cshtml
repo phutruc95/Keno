@@ -23,11 +23,12 @@
             </div>
         </div>
 
+        @Html.HiddenFor(model => model.Image)
         <div class="form-group">
             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Image)
-                @Html.ValidationMessageFor(model => model.Image)
+                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@Url.Content("~/Content/Images/img-err.png")" />
+                <input type="file" id="image-uploader" name="image-uploader" class="hidden" />
             </div>
         </div>
 
@@ -64,7 +65,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProductTypeID, "ProductTypeID", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProductTypeID, "Loại sản phẩm", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ProductTypeID", String.Empty)
                 @Html.ValidationMessageFor(model => model.ProductTypeID)
@@ -79,10 +80,25 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#image-uploader').change(function () {
+                var file = this.files[0];
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var dataURL = reader.result;
+                    $('input[name=Image]').val(dataURL);
+                    $('#image-displayer').attr('src', dataURL);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            $('#image-displayer').on('click', function () {
+                $('#image-uploader').trigger('click');
+            });
+        });
+    </script>
 }
+

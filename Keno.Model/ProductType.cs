@@ -11,6 +11,7 @@ namespace Keno.Model
     {
         [Key]
         public int ID { get; set; }
+        [Display(Name = "Tên loại sản phẩm")]
         public string TypeName { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }

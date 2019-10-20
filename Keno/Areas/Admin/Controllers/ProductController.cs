@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Keno.Model;
+using Keno.ViewModel;
 using Keno.Repository;
 
 namespace Keno.Areas.Admin.Controllers
@@ -19,6 +20,11 @@ namespace Keno.Areas.Admin.Controllers
         // GET: /Admin/Product/
         public ActionResult Index()
         {
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb("#", "Sản phẩm")
+            };
+
             var products = db.Products.Include(p => p.ProductType);
             return View(products.ToList());
         }
@@ -41,6 +47,12 @@ namespace Keno.Areas.Admin.Controllers
         // GET: /Admin/Product/Create
         public ActionResult Create()
         {
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb(Url.Action("Index"), "Sản phẩm"),
+                new Breadcrumb("#", "Thêm mới")
+            };
+
             ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName");
             return View();
         }
@@ -75,6 +87,12 @@ namespace Keno.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb(Url.Action("Index"), "Sản phẩm"),
+                new Breadcrumb("#", "Chỉnh sửa")
+            };
             ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
             return View(product);
         }

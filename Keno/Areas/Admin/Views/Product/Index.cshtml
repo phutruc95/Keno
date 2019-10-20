@@ -7,7 +7,7 @@
 <h3>Danh sách sản phẩm</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
@@ -44,10 +44,10 @@
             @Html.DisplayFor(modelItem => item.ProductName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+            <img style="height: 50px; width: auto;" src="@item.Image" alt="@item.ProductName"/>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Url)
+            @Html.ActionLink(item.Url, item.Url)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.IsOnSale)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.ID }) |
+            @*@Html.ActionLink("Chi tiết", "Details", new { id=item.ID }) |*@
+            @Html.ActionLink("Xóa", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="~/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 		<link rel="stylesheet" href="~/assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="~/assets/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Content/Site.css")">
 		<script src="~/assets/js/ace-extra.min.js"></script>
 	</head>
 
@@ -151,7 +152,7 @@
                         <ul class="submenu">
                             <li class="">
                                 <a href="#" class="dropdown-toggle">
-                                    <i class="menu-icon fa fa-list-alt"></i>
+                                    <i class="menu-icon fa fa-caret-right"></i>
                                     Danh sách người dùng
                                     <b class="arrow"></b>
                                 </a>
@@ -177,16 +178,8 @@
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Sản phẩm</a>
-							</li>
 
-							<li class="active">
-								Danh sách sản phẩm
-							</li>
-						</ul><!-- /.breadcrumb -->
+                        @Html.Raw(Keno.ViewModel.Breadcrumb.Render(ViewBag.Breadcrumb))
 
 						<div class="nav-search hidden" id="nav-search">
 							<form class="form-search">
@@ -264,5 +257,12 @@
 
 		<!-- inline scripts related to this page -->
         @RenderSection("scripts", required: false)
+        <script>
+            $(document).ready(function () {
+                $('img').on("error", function () {
+                    this.src = ResolveUrl("@Url.Content("~/Content/Images/img-err.png")");
+                });
+            })
+        </script>
 	</body>
 </html>

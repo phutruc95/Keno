@@ -1,0 +1,7 @@
+﻿td {
+    vertical-align: middle !important;
+}
+
+input[type=text] {
+    width: 60%;
+}

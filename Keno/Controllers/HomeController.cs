@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Keno.Repository;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +11,8 @@ namespace Keno.Controllers
 {
     public class HomeController : Controller
     {
+        private KenoContext db = new KenoContext();
+
         public ActionResult Index()
         {
             return View();
@@ -34,7 +39,8 @@ namespace Keno.Controllers
 
         public ActionResult ProductList()
         {
-            return View();
+            var products = db.Products.Include(p => p.ProductType);
+            return View(products.ToList());
         }
     }
 }
