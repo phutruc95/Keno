@@ -1,0 +1,20 @@
+﻿.side-menu {
+    border: 1px solid #ff720e;
+    padding: 0;
+}
+.side-menu .item {
+    list-style-type: none;
+    padding: 10px;
+    color: #fc5c31;
+    cursor: pointer;
+    font-size: 15px;
+}
+    .side-menu .item:hover,
+    .side-menu .item.active {
+        background-color: #fc5c31;
+        color: #fff;
+    }
+
+.gallery {
+    padding: 0;
+}

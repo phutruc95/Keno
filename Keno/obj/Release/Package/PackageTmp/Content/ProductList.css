@@ -1,0 +1,19 @@
+﻿.product {
+    height: 400px;
+    padding: 5px 5px 15px 5px;
+    cursor: pointer;
+}
+    .product:hover {
+        box-shadow: 0 4px 8px 0 rgba(120, 118, 255, 0.5), 0 6px 20px 0 rgba(120, 118, 255, 0.5);
+    }
+.product .product-name {
+    color: #18185e;
+    font-size: 16px;
+    padding: 0 5px;
+}
+.product .product-price {
+    font-weight: bold;
+    font-size: 14px;
+    color: #db1212;
+    padding: 0 5px;
+}

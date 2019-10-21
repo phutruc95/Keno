@@ -129,7 +129,7 @@ h3 {
 }
 
 .advertise-brick {
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
 }

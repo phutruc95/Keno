@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Keno.Model.Product>
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/Content/Home.css")">
+<link rel="stylesheet" href="@Url.Content("~/Content/ProductList.css")">
+<div class="container">
+    <div class="row">
+        @Html.Partial("_SideMenuPartial")
+        <div class="col-md-9">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4">
+                    <div class="product">
+                        <div class="advertise-brick" style="height: 250px; background-image: url(@product.Image)"></div>
+                        <div class="product-name">@product.ProductName</div>
+                        <div class="product-price">@product.Price ₫</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

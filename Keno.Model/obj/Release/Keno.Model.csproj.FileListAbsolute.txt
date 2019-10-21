@@ -1,0 +1,6 @@
+D:\Project\Keno\Keno.Model\bin\Release\Keno.Model.dll
+D:\Project\Keno\Keno.Model\bin\Release\Keno.Model.pdb
+D:\Project\Keno\Keno.Model\obj\Release\Keno.Model.csprojAssemblyReference.cache
+D:\Project\Keno\Keno.Model\obj\Release\Keno.Model.csproj.CoreCompileInputs.cache
+D:\Project\Keno\Keno.Model\obj\Release\Keno.Model.dll
+D:\Project\Keno\Keno.Model\obj\Release\Keno.Model.pdb

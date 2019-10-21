@@ -1,0 +1,17 @@
+D:\Project\Keno\Keno.Repository\bin\Release\Keno.Repository.dll.config
+D:\Project\Keno\Keno.Repository\bin\Release\Keno.Repository.dll
+D:\Project\Keno\Keno.Repository\bin\Release\Keno.Repository.pdb
+D:\Project\Keno\Keno.Repository\bin\Release\EntityFramework.dll
+D:\Project\Keno\Keno.Repository\bin\Release\EntityFramework.SqlServer.dll
+D:\Project\Keno\Keno.Repository\bin\Release\Keno.Model.dll
+D:\Project\Keno\Keno.Repository\bin\Release\Keno.Model.pdb
+D:\Project\Keno\Keno.Repository\bin\Release\EntityFramework.xml
+D:\Project\Keno\Keno.Repository\bin\Release\EntityFramework.SqlServer.xml
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.csprojAssemblyReference.cache
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.InitializeDb.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.UpdateProduct.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.csproj.GenerateResource.cache
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.csproj.CoreCompileInputs.cache
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.csproj.CopyComplete
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.dll
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.pdb

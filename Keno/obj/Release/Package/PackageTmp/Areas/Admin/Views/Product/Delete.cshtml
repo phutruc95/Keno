@@ -1,0 +1,17 @@
+﻿@model Keno.Model.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Bạn có chắc chắn muốn xóa "@Model.ProductName"?</h2>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <input type="submit" value="Xóa" class="btn btn-default" /> |
+        @Html.ActionLink("Trở lại", "Index")
+    </div>
+}
+

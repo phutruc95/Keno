@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Content/Images/logo.ico")" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Kênh người bán", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Thông báo", "About", "Home")</li>
+                    <li>@Html.ActionLink("Trợ giúp", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Về chúng tôi", "About", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="customer-header container">
+        <div class="row">
+            <div class="col-md-3 text-right">
+                <a class="logo" href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Content/Images/logo.png")" class="logo"/></a>
+            </div>
+            <div class="col-md-9">
+                <span class="search-group">
+                    <input type="text" class="form-control search search-group-item" id="search" placeholder="Tìm sản phẩm, tên cửa hàng" /><button class="btn-search form-control search-group-item"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="customer-navbar container">
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span><a href="@Url.Action("ProductList", "Home")">Danh sách sản phẩm</a></span> | 
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-history" aria-hidden="true"></i></span><a href="#">Cửa hàng bạn đã xem</a></span> | 
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-percent" aria-hidden="true"></i></span><a href="@Url.Action("Sales", "Home")">Khuyến mãi</a></span>
+    </div>
+    <div class="body-content">
+        @RenderBody()
+        <hr />
+        <footer class="container">
+            <p>&copy; @DateTime.Now.Year - Keno Corp., Ltd</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
