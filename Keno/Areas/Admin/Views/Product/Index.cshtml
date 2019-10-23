@@ -47,7 +47,7 @@
             <img style="height: 50px; width: auto;" src="@item.Image" alt="@item.ProductName"/>
         </td>
         <td>
-            @Html.ActionLink(item.Url, item.Url)
+            @Html.ActionLink(Keno.Utility.CommonFunction.ShortenString(item.Url, 20), item.Url, null, new { title = item.Url })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)

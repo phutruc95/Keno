@@ -15,6 +15,7 @@ namespace Keno.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.ListProductType = db.ProductTypes.ToList();
             return View();
         }
 
@@ -35,12 +36,6 @@ namespace Keno.Controllers
         public ActionResult Sales()
         {
             return View();
-        }
-
-        public ActionResult ProductList()
-        {
-            var products = db.Products.Include(p => p.ProductType);
-            return View(products.ToList());
         }
     }
 }

@@ -1,8 +1,17 @@
-﻿<div class="col-md-3">
+﻿@model IEnumerable <Keno.Model.ProductType>
+
+@{ 
+    int? typeID = ViewBag.TypeID;
+}
+
+<div class="col-md-3">
     <ul class="side-menu">
-        <li class="item active">Đồ gia dụng</li>
-        <li class="item">Hàng tiêu dùng - Thực phẩm</li>
-        <li class="item">Thời trang - Phụ kiện</li>
-        <li class="item">Sản phẩm thân thiện môi trường</li>
+        <li class="item product-type @(typeID == null || typeID == 0 ? "active" : "")" data-id="0">Tất cả</li>
+        @foreach (var type in Model)
+        {
+            <li class="item product-type @(typeID == type.ID ? "active" : "")" data-id="@type.ID">@type.TypeName</li>
+        }
     </ul>
 </div>
+
+

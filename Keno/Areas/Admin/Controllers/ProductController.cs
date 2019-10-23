@@ -53,26 +53,10 @@ namespace Keno.Areas.Admin.Controllers
                 new Breadcrumb("#", "Thêm mới")
             };
 
+            var product = new Product();
             ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName");
-            return View();
-        }
 
-        // POST: /Admin/Product/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
-            return View(product);
+            return View("Edit", product);
         }
 
         // GET: /Admin/Product/Edit/5
@@ -93,6 +77,7 @@ namespace Keno.Areas.Admin.Controllers
                 new Breadcrumb(Url.Action("Index"), "Sản phẩm"),
                 new Breadcrumb("#", "Chỉnh sửa")
             };
+
             ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
             return View(product);
         }

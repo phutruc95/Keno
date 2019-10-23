@@ -17,7 +17,8 @@ namespace Keno.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", controller = "Product", id = UrlParameter.Optional }
+                new { action = "Index", controller = "Product", id = UrlParameter.Optional },
+                new[] { "Keno.Areas.Admin.Controllers" }
             );
         }
     }
