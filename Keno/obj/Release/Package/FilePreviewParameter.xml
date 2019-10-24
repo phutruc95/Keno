@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Keno" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Project\\Keno\\Keno\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Project\\Keno\\Keno\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="workstation id=KenoDatabase.mssql.somee.com;packet size=4096;user id=phutruc952_SQLLogin_1;pwd=lo341uaeul;data source=KenoDatabase.mssql.somee.com;persist security info=False;initial catalog=KenoDatabase" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Project\\Keno\\Keno\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="KenoContext-Web.config Connection String" description="" value="workstation id=KenoDatabase.mssql.somee.com;packet size=4096;user id=phutruc952_SQLLogin_1;pwd=lo341uaeul;data source=KenoDatabase.mssql.somee.com;persist security info=False;initial catalog=KenoDatabase" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Project\\Keno\\Keno\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='KenoContext']/@connectionString" />
+  </parameter>
+</parameters>

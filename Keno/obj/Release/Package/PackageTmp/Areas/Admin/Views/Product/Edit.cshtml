@@ -1,10 +1,10 @@
 ﻿@model Keno.Model.Product
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Model.ID == 0 ? "Thêm sản phẩm" : "Chỉnh sửa thông tin sản phẩm";
 }
 
-<h3>Chỉnh sửa thông tin sản phẩm</h3>
+<h3>@(ViewBag.Title)</h3>
 
 @using (Html.BeginForm())
 {
@@ -22,11 +22,16 @@
             </div>
         </div>
 
-        @Html.HiddenFor(model => model.Image)
         <div class="form-group">
             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null ? Model.Image : string.Empty)" />
+                @Html.EditorFor(model => model.Image)
+                @Html.ValidationMessageFor(model => model.Image)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null && !string.IsNullOrEmpty(Model.Image) ? Model.Image : Url.Content("~/Content/Images/img-err.png"))" />
                 <input type="file" id="image-uploader" name="image-uploader" class="hidden" />
             </div>
         </div>
@@ -42,7 +47,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Price)
+                @Html.TextBoxFor(model => model.Price, new { type = "number", min = "0", step = "500" })
                 @Html.ValidationMessageFor(model => model.Price)
             </div>
         </div>
@@ -50,7 +55,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SalePrice, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SalePrice)
+                @Html.TextBoxFor(model => model.SalePrice, new { type = "number", min = "0", step = "500" })
                 @Html.ValidationMessageFor(model => model.SalePrice)
             </div>
         </div>
@@ -79,10 +84,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
@@ -100,6 +101,12 @@
 
             $('#image-displayer').on('click', function () {
                 $('#image-uploader').trigger('click');
+            });
+
+            $('input[name=Image]').on('change keyup paste', function () {
+                console.log($(this).val());
+                var dataURL = $(this).val();
+                $('#image-displayer').attr('src', dataURL);
             });
         });
     </script>

@@ -22,15 +22,10 @@
             </div>
         </div>
 
+        @Html.HiddenFor(model => model.Image)
         <div class="form-group">
             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Image)
-                @Html.ValidationMessageFor(model => model.Image)
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
                 <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null && !string.IsNullOrEmpty(Model.Image) ? Model.Image : Url.Content("~/Content/Images/img-err.png"))" />
                 <input type="file" id="image-uploader" name="image-uploader" class="hidden" />
             </div>
@@ -91,22 +86,17 @@
             $('#image-uploader').change(function () {
                 var file = this.files[0];
                 var reader = new FileReader();
+                reader.readAsDataURL(file);
+
                 reader.onload = function () {
                     var dataURL = reader.result;
-                    $('input[name=Image]').val(dataURL);
+                    //$('input[name=Image]').val(dataURL);
                     $('#image-displayer').attr('src', dataURL);
-                };
-                reader.readAsDataURL(file);
+                };               
             });
 
             $('#image-displayer').on('click', function () {
                 $('#image-uploader').trigger('click');
-            });
-
-            $('input[name=Image]').on('change keyup paste', function () {
-                console.log($(this).val());
-                var dataURL = $(this).val();
-                $('#image-displayer').attr('src', dataURL);
             });
         });
     </script>

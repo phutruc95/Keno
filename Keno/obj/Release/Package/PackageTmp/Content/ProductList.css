@@ -10,10 +10,13 @@
     color: #18185e;
     font-size: 16px;
     padding: 0 5px;
+    margin-top: 10px;
+    text-align: center;
 }
 .product .product-price {
     font-weight: bold;
     font-size: 14px;
     color: #db1212;
     padding: 0 5px;
+    text-align: center;
 }

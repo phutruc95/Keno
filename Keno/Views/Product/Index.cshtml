@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Keno.Model.Product>
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    List<Keno.Model.ProductType> lstProductType = ViewBag.ListProductType;
+}
+
+<link rel="stylesheet" href="@Url.Content("~/Content/Home.css")">
+<link rel="stylesheet" href="@Url.Content("~/Content/ProductList.css")">
+<div class="container">
+    <div class="row">
+        @Html.Partial("_SideMenuPartial", lstProductType)
+        <div class="col-md-9 lst-product">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4">
+                    <a href="@product.Url" style="text-decoration: none;">
+                        <div class="product">
+                            <div class="advertise-brick" style="height: 250px; background-image: url(@product.Image); background-size: contain"></div>
+                            <div class="product-name">@product.ProductName</div>
+                            <div class="product-price">@product.Price ₫</div>
+                        </div>
+                    </a>                    
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('li.product-type').on('click', function () {
+                $('li.product-type').removeClass('active');
+                $(this).addClass('active');
+
+                var typeID = $(this).data('id');
+                window.location.href = "@Url.Action("Index", "Product")" + "?typeid=" + typeID;
+            });
+        });
+    </script>
+}

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Keno.Model;
 using Keno.ViewModel;
 using Keno.Repository;
+using System.IO;
 
 namespace Keno.Areas.Admin.Controllers
 {
@@ -59,6 +60,27 @@ namespace Keno.Areas.Admin.Controllers
             return View("Edit", product);
         }
 
+        // POST: /Admin/Product/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")] Product product, Stream stream)
+        {
+            if (ModelState.IsValid)
+            {
+                Utility.CommonFunction.SaveStream(stream);
+                product.Url = "https://google.com.vn";
+
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
+            return View(product);
+        }
+
         // GET: /Admin/Product/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -95,6 +117,7 @@ namespace Keno.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
             return View(product);
         }

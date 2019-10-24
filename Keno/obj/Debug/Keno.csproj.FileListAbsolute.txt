@@ -149,6 +149,8 @@ D:\Project\Keno\Keno\bin\WebGrease.dll
 D:\Project\Keno\Keno\bin\Keno.Model.pdb
 D:\Project\Keno\Keno\bin\Keno.Repository.pdb
 D:\Project\Keno\Keno\bin\Keno.Repository.dll.config
+D:\Project\Keno\Keno\bin\EntityFramework.xml
+D:\Project\Keno\Keno\bin\EntityFramework.SqlServer.xml
 D:\Project\Keno\Keno\bin\System.Web.Helpers.xml
 D:\Project\Keno\Keno\bin\System.Web.Mvc.xml
 D:\Project\Keno\Keno\bin\System.Web.Optimization.xml
@@ -158,8 +160,6 @@ D:\Project\Keno\Keno\bin\System.Web.WebPages.Deployment.xml
 D:\Project\Keno\Keno\bin\System.Web.WebPages.Razor.xml
 D:\Project\Keno\Keno\bin\Newtonsoft.Json.xml
 D:\Project\Keno\Keno\bin\Antlr3.Runtime.pdb
-D:\Project\Keno\Keno\bin\EntityFramework.xml
-D:\Project\Keno\Keno\bin\EntityFramework.SqlServer.xml
 D:\Project\Keno\Keno\bin\Microsoft.AspNet.Identity.Core.xml
 D:\Project\Keno\Keno\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\Project\Keno\Keno\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -180,3 +180,4 @@ D:\Project\Keno\Keno\obj\Debug\Keno.csproj.CoreCompileInputs.cache
 D:\Project\Keno\Keno\obj\Debug\Keno.csproj.CopyComplete
 D:\Project\Keno\Keno\obj\Debug\Keno.dll
 D:\Project\Keno\Keno\obj\Debug\Keno.pdb
+D:\Project\Keno\Keno\obj\Debug\Keno.Migrations.AddAzureDb.resources
