@@ -73,7 +73,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input id="btn-save" type="button" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -82,23 +82,78 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
+        var buffer;
+        var arr;
         $(document).ready(function () {
             $('#image-uploader').change(function () {
                 var file = this.files[0];
                 var reader = new FileReader();
+                var readerBuffer = new FileReader();
+
                 reader.readAsDataURL(file);
+                readerBuffer.readAsArrayBuffer(file);
+
+                //var blob = new Blob([arrayBuffer], { type: "image/png" });
+                //var url = URL.createObjectURL(blob);
 
                 reader.onload = function () {
                     var dataURL = reader.result;
-                    //$('input[name=Image]').val(dataURL);
+                    $('input[name=Image]').val(dataURL);
                     $('#image-displayer').attr('src', dataURL);
-                };               
+                };
+                readerBuffer.onload = function () {
+                    buffer = readerBuffer.result;
+                };
             });
 
             $('#image-displayer').on('click', function () {
                 $('#image-uploader').trigger('click');
             });
+
+            $('#btn-save').on('click', function () {
+                saveProduct();
+            });
         });
+
+        function serializeProduct() {
+            var arrObj = new Uint8Array(buffer);
+            var arr = Object.keys(arrObj).map(function (key) {
+                return arrObj[key];
+            });
+
+            var product = {
+                ID: $('#@Html.NameFor(m => m.ID)').val(),
+                ProductName: $('#@Html.NameFor(m => m.ProductName)').val(),
+                Url: $('#@Html.NameFor(m => m.Url)').val(),
+                Price: $('#@Html.NameFor(m => m.Price)').val(),
+                SalePrice: $('#@Html.NameFor(m => m.SalePrice)').val(),
+                IsOnSale: $('#@Html.NameFor(m => m.IsOnSale)').val(),
+                ProductTypeID: $('#@Html.NameFor(m => m.ProductTypeID)').val(),
+                buffer: arr
+            };
+            return JSON.stringify(product);
+        }
+        function saveProduct() {
+            $.ajax({
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                url: "/Admin/Product/Edit",
+                data: serializeProduct(),
+                beforeSend: function () {
+
+                },
+                success: function (res) {
+                },
+                error: function (xhr) { // if error occured
+
+                },
+                complete: function () {
+                    alert('Completed');
+
+                }
+            });
+        }
     </script>
 }
 

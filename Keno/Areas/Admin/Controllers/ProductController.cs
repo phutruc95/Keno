@@ -10,6 +10,7 @@ using Keno.Model;
 using Keno.ViewModel;
 using Keno.Repository;
 using System.IO;
+using System.Text;
 
 namespace Keno.Areas.Admin.Controllers
 {
@@ -63,25 +64,23 @@ namespace Keno.Areas.Admin.Controllers
         // POST: /Admin/Product/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")] Product product, Stream stream)
-        {
-            if (ModelState.IsValid)
-            {
-                Utility.CommonFunction.SaveStream(stream);
-                product.Url = "https://google.com.vn";
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")] Product product, Stream stream)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Products.Add(product);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
-            return View(product);
-        }
+        //    ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
+        //    return View(product);
+        //}
 
         // GET: /Admin/Product/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -108,12 +107,29 @@ namespace Keno.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")] Product product)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")]Product product, int[] buffer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                //byte[] arrBuff = Encoding.ASCII.GetBytes(buffer);
+                //byte[] arrBuff2 = System.IO.File.ReadAllBytes("D:\\rose0.jpeg");
+                //System.IO.File.WriteAllBytes("D:\\rose.jpeg", buffer);
+
+                byte[] result = new byte[buffer.Length];
+                for (int i = 0; i < buffer.Length; i++)
+                {
+                    result[i] = (byte)buffer[i];
+                }
+
+                if (product.ID == 0)
+                {
+                    db.Products.Add(product);
+                }
+                else
+                {
+                    db.Entry(product).State = EntityState.Modified;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
