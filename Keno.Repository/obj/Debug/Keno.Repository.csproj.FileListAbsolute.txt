@@ -40,3 +40,6 @@ D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.csproj.CoreCompileInpu
 D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.csproj.CopyComplete
 D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.dll
 D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.pdb
+D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.UpdateProductAddShopandOffer.resources
+D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.AddtableShopsandOffers.resources
+D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.Updatedouble.resources

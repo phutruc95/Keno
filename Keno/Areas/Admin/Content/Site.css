@@ -2,6 +2,7 @@
     vertical-align: middle !important;
 }
 
-input[type=text] {
+input[type=text],
+textarea {
     width: 60%;
 }

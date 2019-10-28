@@ -6,7 +6,7 @@
 
 <h3>@(ViewBag.Title)</h3>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <hr />
@@ -26,8 +26,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null && !string.IsNullOrEmpty(Model.Image) ? Model.Image : Url.Content("~/Content/Images/img-err.png"))" />
-                <input type="file" id="image-uploader" name="image-uploader" class="hidden" />
+                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null && !string.IsNullOrEmpty(Model.Image) ? Url.Content(Model.Image) : Url.Content("~/Content/Images/no-image-available.jpg"))" />
+                <input type="file" id="image-uploader" name="imgFile" class="hidden" />
             </div>
         </div>
 
@@ -36,6 +36,22 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Url)
                 @Html.ValidationMessageFor(model => model.Url)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShortDesc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ShortDesc)
+                @Html.ValidationMessageFor(model => model.ShortDesc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Desc, new { rows = "5" })
+                @Html.ValidationMessageFor(model => model.Desc)
             </div>
         </div>
 
@@ -73,7 +89,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="btn-save" type="button" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -88,21 +104,15 @@
             $('#image-uploader').change(function () {
                 var file = this.files[0];
                 var reader = new FileReader();
-                var readerBuffer = new FileReader();
 
                 reader.readAsDataURL(file);
-                readerBuffer.readAsArrayBuffer(file);
 
                 //var blob = new Blob([arrayBuffer], { type: "image/png" });
                 //var url = URL.createObjectURL(blob);
 
                 reader.onload = function () {
                     var dataURL = reader.result;
-                    $('input[name=Image]').val(dataURL);
                     $('#image-displayer').attr('src', dataURL);
-                };
-                readerBuffer.onload = function () {
-                    buffer = readerBuffer.result;
                 };
             });
 
@@ -110,50 +120,29 @@
                 $('#image-uploader').trigger('click');
             });
 
-            $('#btn-save').on('click', function () {
-                saveProduct();
-            });
         });
 
-        function serializeProduct() {
-            var arrObj = new Uint8Array(buffer);
-            var arr = Object.keys(arrObj).map(function (key) {
-                return arrObj[key];
-            });
+        //function saveProduct() {
+        //    $.ajax({
+        //        type: 'POST',
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: 'json',
+        //        url: "/Admin/Product/Edit",
+        //        data: serializeProduct(),
+        //        beforeSend: function () {
 
-            var product = {
-                ID: $('#@Html.NameFor(m => m.ID)').val(),
-                ProductName: $('#@Html.NameFor(m => m.ProductName)').val(),
-                Url: $('#@Html.NameFor(m => m.Url)').val(),
-                Price: $('#@Html.NameFor(m => m.Price)').val(),
-                SalePrice: $('#@Html.NameFor(m => m.SalePrice)').val(),
-                IsOnSale: $('#@Html.NameFor(m => m.IsOnSale)').val(),
-                ProductTypeID: $('#@Html.NameFor(m => m.ProductTypeID)').val(),
-                buffer: arr
-            };
-            return JSON.stringify(product);
-        }
-        function saveProduct() {
-            $.ajax({
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'json',
-                url: "/Admin/Product/Edit",
-                data: serializeProduct(),
-                beforeSend: function () {
+        //        },
+        //        success: function (res) {
+        //        },
+        //        error: function (xhr) { // if error occured
 
-                },
-                success: function (res) {
-                },
-                error: function (xhr) { // if error occured
+        //        },
+        //        complete: function () {
+        //            alert('Completed');
 
-                },
-                complete: function () {
-                    alert('Completed');
-
-                }
-            });
-        }
+        //        }
+        //    });
+        //}
     </script>
 }
 

@@ -55,6 +55,18 @@
     <Compile Include="Migrations\201910131211599_Update Product.Designer.cs">
       <DependentUpon>201910131211599_Update Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910261136518_Update Product, Add Shop and Offer.cs" />
+    <Compile Include="Migrations\201910261136518_Update Product, Add Shop and Offer.Designer.cs">
+      <DependentUpon>201910261136518_Update Product, Add Shop and Offer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910261143371_Add table Shops and Offers.cs" />
+    <Compile Include="Migrations\201910261143371_Add table Shops and Offers.Designer.cs">
+      <DependentUpon>201910261143371_Add table Shops and Offers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910261200368_Update double.cs" />
+    <Compile Include="Migrations\201910261200368_Update double.Designer.cs">
+      <DependentUpon>201910261200368_Update double.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +86,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910131211599_Update Product.resx">
       <DependentUpon>201910131211599_Update Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910261136518_Update Product, Add Shop and Offer.resx">
+      <DependentUpon>201910261136518_Update Product, Add Shop and Offer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910261143371_Add table Shops and Offers.resx">
+      <DependentUpon>201910261143371_Add table Shops and Offers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910261200368_Update double.resx">
+      <DependentUpon>201910261200368_Update double.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

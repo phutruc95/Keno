@@ -1,6 +1,5 @@
 D:\MyProject\Keno\Keno.Model\bin\Debug\Keno.Model.dll
 D:\MyProject\Keno\Keno.Model\bin\Debug\Keno.Model.pdb
-D:\MyProject\Keno\Keno.Model\obj\Debug\Keno.Model.csprojResolveAssemblyReference.cache
 D:\MyProject\Keno\Keno.Model\obj\Debug\Keno.Model.dll
 D:\MyProject\Keno\Keno.Model\obj\Debug\Keno.Model.pdb
 D:\Project\Keno\Keno.Model\bin\Debug\Keno.Model.dll
@@ -9,3 +8,4 @@ D:\Project\Keno\Keno.Model\obj\Debug\Keno.Model.csprojAssemblyReference.cache
 D:\Project\Keno\Keno.Model\obj\Debug\Keno.Model.csproj.CoreCompileInputs.cache
 D:\Project\Keno\Keno.Model\obj\Debug\Keno.Model.dll
 D:\Project\Keno\Keno.Model\obj\Debug\Keno.Model.pdb
+D:\MyProject\Keno\Keno.Model\obj\Debug\Keno.Model.csprojResolveAssemblyReference.cache

@@ -181,3 +181,4 @@ D:\Project\Keno\Keno\obj\Debug\Keno.csproj.CopyComplete
 D:\Project\Keno\Keno\obj\Debug\Keno.dll
 D:\Project\Keno\Keno\obj\Debug\Keno.pdb
 D:\Project\Keno\Keno\obj\Debug\Keno.Migrations.AddAzureDb.resources
+D:\MyProject\Keno\Keno\obj\Debug\Keno.Migrations.AddAzureDb.resources

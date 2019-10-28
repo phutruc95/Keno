@@ -17,13 +17,45 @@ namespace Keno.Model
         public string Image { get; set; }
         public string Url { get; set; }
         [Display(Name = "Giá")]
-        public float Price { get; set; }
+        public decimal Price { get; set; }
         [Display(Name = "Giá khuyến mãi")]
-        public float SalePrice { get; set; }
+        public decimal SalePrice { get; set; }
         [Display(Name = "Đang khuyến mãi")]
         public bool IsOnSale { get; set; }
+
         [Display(Name = "Loại sản phẩm")]
         public int ProductTypeID { get; set; }
         public virtual ProductType ProductType { get; set; }
+        [Display(Name = "Mô tả")]
+        public string ShortDesc { get; set; }
+        [Display(Name = "Thông tin chi tiết")]
+        public string Desc { get; set; }
+        private string _rate { get; set; }
+        public float Rate
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_rate)) return 0;
+
+                float sum = 0;
+                string[] rates = _rate.Split(';');
+                foreach (var rate in rates)
+                {
+                    sum += float.Parse(rate);
+                }
+                return sum / rates.Length;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(_rate))
+                {
+                    _rate = value.ToString();
+                }
+                else
+                {
+                    _rate += ";" + value.ToString();
+                }
+            }
+        }
     }
 }

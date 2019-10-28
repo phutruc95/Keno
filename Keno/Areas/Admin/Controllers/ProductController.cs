@@ -61,24 +61,6 @@ namespace Keno.Areas.Admin.Controllers
             return View("Edit", product);
         }
 
-        // POST: /Admin/Product/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")] Product product, Stream stream)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Products.Add(product);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    ViewBag.ProductTypeID = new SelectList(db.ProductTypes, "ID", "TypeName", product.ProductTypeID);
-        //    return View(product);
-        //}
-
         // GET: /Admin/Product/Edit/5
         [HttpGet]
         public ActionResult Edit(int? id)
@@ -108,18 +90,28 @@ namespace Keno.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")]Product product, int[] buffer)
+        //[Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")]
+        public ActionResult Edit(Product product, HttpPostedFileBase imgFile)
         {
             if (ModelState.IsValid)
             {
-                //byte[] arrBuff = Encoding.ASCII.GetBytes(buffer);
-                //byte[] arrBuff2 = System.IO.File.ReadAllBytes("D:\\rose0.jpeg");
-                //System.IO.File.WriteAllBytes("D:\\rose.jpeg", buffer);
-
-                byte[] result = new byte[buffer.Length];
-                for (int i = 0; i < buffer.Length; i++)
+                if (imgFile != null)
                 {
-                    result[i] = (byte)buffer[i];
+                    if (!string.IsNullOrEmpty(product.Image))
+                    {
+                        string currentFilePath = Path.Combine(Server.MapPath("~/UserImages/"), Path.GetFileName(product.Image));
+                        if (System.IO.File.Exists(currentFilePath))
+                        {
+                            System.IO.File.Delete(currentFilePath);
+                        }
+                    }
+
+                    string fileName = Path.GetFileNameWithoutExtension(imgFile.FileName);
+                    string extension = Path.GetExtension(imgFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    product.Image = "~/UserImages/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/UserImages/"), fileName);
+                    imgFile.SaveAs(fileName);
                 }
 
                 if (product.ID == 0)
