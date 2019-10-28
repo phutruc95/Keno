@@ -43,3 +43,6 @@ D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.pdb
 D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.UpdateProductAddShopandOffer.resources
 D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.AddtableShopsandOffers.resources
 D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.Updatedouble.resources
+D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.UpdateProductAddShopandOffer.resources
+D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.AddtableShopsandOffers.resources
+D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.Updatedouble.resources

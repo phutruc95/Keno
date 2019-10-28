@@ -15,3 +15,6 @@ D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.csproj.CoreCompileIn
 D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.csproj.CopyComplete
 D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.dll
 D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.pdb
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.UpdateProductAddShopandOffer.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.AddtableShopsandOffers.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Updatedouble.resources

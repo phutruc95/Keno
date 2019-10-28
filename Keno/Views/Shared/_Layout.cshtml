@@ -21,7 +21,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Kênh người bán", "Index", "Home")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Trang quản trị", "Index", "Product", new { Area = "Admin" }, new { })</li>
+                    }
+                    else if (User.IsInRole("Vendor"))
+                    {
+                        <li>@Html.ActionLink("Kênh người bán", "Index", "Product", new { Area = "Admin" }, new {})</li>
+                    }
                     <li>@Html.ActionLink("Thông báo", "About", "Home")</li>
                     <li>@Html.ActionLink("Trợ giúp", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Về chúng tôi", "About", "Home")</li>

@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Admin/Content/Site.css">
-      <publishTime>10/21/2019 11:38:49</publishTime>
+      <publishTime>10/28/2019 09:15:35</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Create.cshtml">
       <publishTime>10/21/2019 11:38:49</publishTime>
@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Edit.cshtml">
-      <publishTime>10/23/2019 13:26:17</publishTime>
+      <publishTime>10/28/2019 09:15:35</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
-      <publishTime>10/23/2019 14:53:40</publishTime>
+      <publishTime>10/28/2019 09:15:35</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ProductType/Create.cshtml">
       <publishTime>10/21/2019 11:38:49</publishTime>
@@ -37,7 +37,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>10/24/2019 10:44:53</publishTime>
+      <publishTime>10/28/2019 15:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/web.config">
       <publishTime>10/21/2019 11:38:49</publishTime>
@@ -478,25 +478,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/Keno.dll">
-      <publishTime>10/24/2019 14:16:49</publishTime>
+      <publishTime>10/28/2019 15:53:14</publishTime>
     </File>
     <File Include="bin/Keno.Model.dll">
-      <publishTime>10/21/2019 11:40:44</publishTime>
+      <publishTime>10/28/2019 15:28:41</publishTime>
     </File>
     <File Include="bin/Keno.Model.pdb">
-      <publishTime>10/21/2019 11:40:44</publishTime>
+      <publishTime>10/28/2019 15:28:41</publishTime>
     </File>
     <File Include="bin/Keno.pdb">
-      <publishTime>10/24/2019 14:16:49</publishTime>
+      <publishTime>10/28/2019 15:53:14</publishTime>
     </File>
     <File Include="bin/Keno.Repository.dll">
-      <publishTime>10/21/2019 11:40:44</publishTime>
+      <publishTime>10/28/2019 15:28:49</publishTime>
     </File>
     <File Include="bin/Keno.Repository.dll.config">
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
     <File Include="bin/Keno.Repository.pdb">
-      <publishTime>10/21/2019 11:40:44</publishTime>
+      <publishTime>10/28/2019 15:28:49</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>10/21/2019 11:38:50</publishTime>
@@ -585,8 +585,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/Images/logo.png">
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
+    <File Include="Content/Images/no-image-available.jpg">
+      <publishTime>10/28/2019 09:15:35</publishTime>
+    </File>
     <File Include="Content/ProductList.css">
-      <publishTime>10/23/2019 17:00:10</publishTime>
+      <publishTime>10/28/2019 09:15:35</publishTime>
     </File>
     <File Include="Content/Sales.css">
       <publishTime>10/21/2019 11:38:49</publishTime>
@@ -652,7 +655,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>10/21/2019 11:38:49</publishTime>
+      <publishTime>10/28/2019 09:15:35</publishTime>
     </File>
     <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
       <publishTime>10/21/2019 11:38:49</publishTime>
@@ -661,10 +664,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>10/21/2019 11:38:49</publishTime>
+      <publishTime>10/28/2019 14:47:47</publishTime>
     </File>
     <File Include="Views/Account/Manage.cshtml">
-      <publishTime>10/21/2019 11:38:49</publishTime>
+      <publishTime>10/28/2019 14:48:20</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>10/21/2019 11:38:49</publishTime>
@@ -697,13 +700,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2019 13:51:33</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>10/23/2019 17:13:00</publishTime>
+      <publishTime>10/28/2019 09:15:36</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/23/2019 14:02:10</publishTime>
+      <publishTime>10/28/2019 15:21:07</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/21/2019 11:38:49</publishTime>
@@ -718,7 +721,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2019 11:38:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/24/2019 14:16:49</publishTime>
+      <publishTime>10/28/2019 15:51:10</publishTime>
     </File>
   </ItemGroup>
 </Project>

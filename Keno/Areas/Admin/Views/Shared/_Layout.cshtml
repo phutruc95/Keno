@@ -47,17 +47,17 @@
                 <ul class="nav ace-nav">
                     <li class="light-blue dropdown-modal">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="~/assets/images/avatars/user.jpg" alt="Jason's Photo" />
+                            <img class="nav-user-photo" src="~/assets/images/avatars/avatar2.png" alt="Jason's Photo" />
                             <span class="user-info">
-                                <small>Welcome,</small>
-                                Admin
+                                <small>Xin chào,</small>
+                                @User.Identity.Name
                             </span>
                             <i class="ace-icon fa fa-caret-down"></i>
                         </a>
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                             <li>
-                                <a href="profile.html">
+                                <a href="@Url.Action("Manage", "Account", new { area = "" })">
                                     <i class="ace-icon fa fa-user"></i>
                                     Tài khoản
                                 </a>
@@ -90,6 +90,16 @@
             </script>
 
             <ul class="nav nav-list">
+                <li class="">
+                    <a href="@Url.Action("Index", "Home", new { area = "" })">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text">
+                            Trang người dùng
+                        </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
                 <li class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-list-alt"></i>

@@ -1,5 +1,5 @@
 ﻿.product {
-    height: 400px;
+    height: 420px;
     padding: 5px 5px 15px 5px;
     cursor: pointer;
 }
@@ -19,4 +19,13 @@
     color: #db1212;
     padding: 0 5px;
     text-align: center;
+}
+.product .product-shortdesc {
+    color: #333333;
+    padding: 5px;
+}
+
+.product .product-rating {
+    text-align: center;
+    color: #ff8d00;
 }

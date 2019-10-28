@@ -99,7 +99,7 @@ namespace Keno.Areas.Admin.Controllers
                 {
                     if (!string.IsNullOrEmpty(product.Image))
                     {
-                        string currentFilePath = Path.Combine(Server.MapPath("~/UserImages/"), Path.GetFileName(product.Image));
+                        string currentFilePath = Path.Combine(Server.MapPath("~/Content/UserImages/"), Path.GetFileName(product.Image));
                         if (System.IO.File.Exists(currentFilePath))
                         {
                             System.IO.File.Delete(currentFilePath);
@@ -109,8 +109,8 @@ namespace Keno.Areas.Admin.Controllers
                     string fileName = Path.GetFileNameWithoutExtension(imgFile.FileName);
                     string extension = Path.GetExtension(imgFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    product.Image = "~/UserImages/" + fileName;
-                    fileName = Path.Combine(Server.MapPath("~/UserImages/"), fileName);
+                    product.Image = "~/Content/UserImages/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/UserImages/"), fileName);
                     imgFile.SaveAs(fileName);
                 }
 
@@ -151,6 +151,13 @@ namespace Keno.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
+
+            string currentFilePath = Path.Combine(Server.MapPath("~/Content/UserImages/"), Path.GetFileName(product.Image));
+            if (System.IO.File.Exists(currentFilePath))
+            {
+                System.IO.File.Delete(currentFilePath);
+            }
+
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");

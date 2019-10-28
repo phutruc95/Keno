@@ -16,9 +16,19 @@
                 <div class="col-md-4">
                     <a href="@product.Url" style="text-decoration: none;">
                         <div class="product">
-                            <div class="advertise-brick" style="height: 250px; background-image: url(@product.Image); background-size: contain"></div>
+                            <div class="advertise-brick" style="height: 250px; background-image: url(@Url.Content(product.Image)); background-size: contain"></div>
                             <div class="product-name">@product.ProductName</div>
-                            <div class="product-price">@product.Price ₫</div>
+                            <div class="product-price">@(string.Format("{0:C}", product.Price)) ₫</div>
+                            <div class="product-rating">
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star-half"></i></span>
+                            </div>
+                            <p class="product-shortdesc" align="justify">
+                                @(Keno.Utility.CommonFunction.ShortenString(product.ShortDesc, 120))
+                            </p>
                         </div>
                     </a>                    
                 </div>
