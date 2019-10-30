@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using System.Net;
+using System.Net.Mail;
 using Keno.Models;
 
 namespace Keno.Controllers
@@ -78,7 +80,7 @@ namespace Keno.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -93,6 +95,46 @@ namespace Keno.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        //
+        //  GET: /Account/ForgetPassword
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ForgotPassword(string email)
+        {
+            string smtpAddress = "smtp.gmail.com";  
+            int portNumber = 587;  
+            bool enableSSL = true;  
+            string emailFromAddress = "sender@gmail.com"; //Sender Email Address  
+            string password = "Abc@123$%^"; //Sender Password  
+            string emailToAddress = "receiver@gmail.com"; //Receiver Email Address  
+            string subject = "Hello";  
+            string body = "Hello, This is Email sending test using gmail.";
+
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress(emailFromAddress);
+                mail.To.Add(emailToAddress);
+                mail.Subject = subject;
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                //mail.Attachments.Add(new Attachment("D:\\TestFile.txt"));//--Uncomment this to send any attachment  
+                using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+                {
+                    smtp.Credentials = new NetworkCredential(emailFromAddress, password);
+                    smtp.EnableSsl = enableSSL;
+                    smtp.Send(mail);
+                }
+            } 
+            return null;
         }
 
         //

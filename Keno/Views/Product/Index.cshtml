@@ -11,8 +11,10 @@
     <div class="row">
         @Html.Partial("_SideMenuPartial", lstProductType)
         <div class="col-md-9 lst-product">
-            @foreach (var product in Model)
+            @if (Model != null && Model.Count() > 0)
             {
+               foreach (var product in Model)
+               {
                 <div class="col-md-4">
                     <a href="@product.Url" style="text-decoration: none;">
                         <div class="product">
@@ -32,6 +34,11 @@
                         </div>
                     </a>                    
                 </div>
+               }
+            }
+            else
+            {
+                <div class="empty"></div>
             }
         </div>
     </div>

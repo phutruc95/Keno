@@ -29,3 +29,14 @@
     text-align: center;
     color: #ff8d00;
 }
+
+.empty {
+    background-image: url("Images/empty-box.png");
+    background-size: 120px;
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+

@@ -133,7 +133,7 @@
                 </li>
                 <li class="">
                     <a href="widgets.html">
-                        <i class="menu-icon fa fa-percent"></i>
+                        <i class="menu-icon fa fa-bolt"></i>
                         <span class="menu-text">Khuyến mãi</span>
                     </a>
 
@@ -264,11 +264,11 @@
     <!-- inline scripts related to this page -->
     @RenderSection("scripts", required: false)
     <script>
-            $(document).ready(function () {
-                $('img').on("error", function () {
-                    this.src ="@Url.Content("~/Content/Images/no-image-available.jpg")";
-                });
-            })
+        $(document).ready(function () {
+            $('img').on("error", function () {
+                this.src ="@Url.Content("~/Content/Images/no-image-available.jpg")";
+            });
+        })
     </script>
 </body>
 </html>
