@@ -336,6 +336,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\Images\empty-box.png" />
+    <Content Include="Content\Images\introduction.gif" />
     <Content Include="Content\Images\logo.ico" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\no-image-available.jpg" />
