@@ -64,3 +64,5 @@ D:\Project\Keno\Keno\obj\Release\Keno.csproj.CopyComplete
 D:\Project\Keno\Keno\obj\Release\Keno.dll
 D:\Project\Keno\Keno\obj\Release\Keno.pdb
 D:\Project\Keno\Keno\obj\Release\Keno.Migrations.AddAzureDb.resources
+D:\Project\Keno\Keno\obj\Release\Keno.Migrations.Updateemailforuser.resources
+D:\Project\Keno\Keno\obj\Release\Keno.Migrations.SetEmailasUnique.resources

@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null && !string.IsNullOrEmpty(Model.Image) ? Url.Content(Model.Image) : Url.Content("~/Content/Images/no-image-available.jpg"))" />
+                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null && Model.ID != 0 ? Url.Content(Model.Image) : Url.Content("~/Content/Images/no-image-available.jpg"))" />
                 <input type="file" id="image-uploader" name="imgFile" class="hidden" />
             </div>
         </div>

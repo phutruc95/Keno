@@ -66,5 +66,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('img').on("error", function () {
+                this.src ="@Url.Content("~/Content/Images/no-image-available.jpg")";
+            });
+        })
+    </script>
 </body>
 </html>

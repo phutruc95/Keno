@@ -1,4 +1,7 @@
-﻿td {
+﻿body {
+    font-family: Arial;
+}
+td {
     vertical-align: middle !important;
 }
 
