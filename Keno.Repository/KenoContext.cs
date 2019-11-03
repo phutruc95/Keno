@@ -20,5 +20,6 @@ namespace Keno.Repository
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Offer> Offers { get; set; }
+        public DbSet<Statistics> Statistics { get; set; }
     }
 }

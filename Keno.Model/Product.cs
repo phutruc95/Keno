@@ -57,5 +57,6 @@ namespace Keno.Model
                 }
             }
         }
+        public string UploaderID { get; set; }
     }
 }

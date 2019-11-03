@@ -13,6 +13,7 @@
     <div class="form-horizontal">
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.UploaderID, new { @Value = User.Identity.Name })
 
         <div class="form-group">
             @Html.LabelFor(model => model.ProductName, new { @class = "control-label col-md-2" })
@@ -26,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(Model != null && Model.ID != 0 ? Url.Content(Model.Image) : Url.Content("~/Content/Images/no-image-available.jpg"))" />
+                <img id="image-displayer" style="height: 100px; width: auto; cursor: pointer;" src="@(!string.IsNullOrEmpty(Model.Image) ? Url.Content(Model.Image) : Url.Content("~/Content/Images/no-image-available.jpg"))" />
                 <input type="file" id="image-uploader" name="imgFile" class="hidden" />
             </div>
         </div>
@@ -97,52 +98,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        var buffer;
-        var arr;
-        $(document).ready(function () {
-            $('#image-uploader').change(function () {
-                var file = this.files[0];
-                var reader = new FileReader();
-
-                reader.readAsDataURL(file);
-
-                //var blob = new Blob([arrayBuffer], { type: "image/png" });
-                //var url = URL.createObjectURL(blob);
-
-                reader.onload = function () {
-                    var dataURL = reader.result;
-                    $('#image-displayer').attr('src', dataURL);
-                };
-            });
-
-            $('#image-displayer').on('click', function () {
-                $('#image-uploader').trigger('click');
-            });
-
-        });
-
-        //function saveProduct() {
-        //    $.ajax({
-        //        type: 'POST',
-        //        contentType: "application/json; charset=utf-8",
-        //        dataType: 'json',
-        //        url: "/Admin/Product/Edit",
-        //        data: serializeProduct(),
-        //        beforeSend: function () {
-
-        //        },
-        //        success: function (res) {
-        //        },
-        //        error: function (xhr) { // if error occured
-
-        //        },
-        //        complete: function () {
-        //            alert('Completed');
-
-        //        }
-        //    });
-        //}
-    </script>
+    @Scripts.Render("~/bundles/adminScript")
 }
 

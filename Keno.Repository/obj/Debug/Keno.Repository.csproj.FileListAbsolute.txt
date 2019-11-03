@@ -46,3 +46,5 @@ D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.Updatedou
 D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.UpdateProductAddShopandOffer.resources
 D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.AddtableShopsandOffers.resources
 D:\Project\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.Updatedouble.resources
+D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.AddstatisticsandUploader.resources
+D:\MyProject\Keno\Keno.Repository\obj\Debug\Keno.Repository.Migrations.AddAccessDateforStatistics.resources

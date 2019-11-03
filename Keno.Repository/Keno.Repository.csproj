@@ -67,6 +67,14 @@
     <Compile Include="Migrations\201910261200368_Update double.Designer.cs">
       <DependentUpon>201910261200368_Update double.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911031653045_Add statistics and Uploader.cs" />
+    <Compile Include="Migrations\201911031653045_Add statistics and Uploader.Designer.cs">
+      <DependentUpon>201911031653045_Add statistics and Uploader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911031702016_Add AccessDate for Statistics.cs" />
+    <Compile Include="Migrations\201911031702016_Add AccessDate for Statistics.Designer.cs">
+      <DependentUpon>201911031702016_Add AccessDate for Statistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,6 +103,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910261200368_Update double.resx">
       <DependentUpon>201910261200368_Update double.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031653045_Add statistics and Uploader.resx">
+      <DependentUpon>201911031653045_Add statistics and Uploader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031702016_Add AccessDate for Statistics.resx">
+      <DependentUpon>201911031702016_Add AccessDate for Statistics.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

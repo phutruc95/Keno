@@ -1,10 +1,13 @@
-﻿@model IEnumerable<Keno.Model.Product>
+﻿@*@model IEnumerable<Keno.Model.Product>*@
+@model PagedList.IPagedList<Keno.Model.Product>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Danh sách sản phẩm";
     List<Keno.Model.ProductType> lstProductType = ViewBag.ListProductType;
 }
 
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="@Url.Content("~/Content/Home.css")">
 <link rel="stylesheet" href="@Url.Content("~/Content/ProductList.css")">
 <div class="container">
@@ -16,7 +19,7 @@
                foreach (var product in Model)
                {
                 <div class="col-md-4">
-                    <a href="@product.Url" style="text-decoration: none;">
+                    <a href="@Url.Action("Details", "Product", new { id = product.ID })" style="text-decoration: none;">
                         <div class="product">
                             <div class="advertise-brick" style="height: 250px; background-image: url('@Url.Content(product.Image)'), url('@Url.Content("~/Content/Images/no-image-available.jpg")'); background-size: contain"></div>
                             <div class="product-name">@product.ProductName</div>
@@ -42,6 +45,9 @@
             }
         </div>
     </div>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, searchStr = Request.QueryString["searchStr"], sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
 
 @section scripts{

@@ -1,8 +1,11 @@
-﻿@model IEnumerable<Keno.Model.Product>
+﻿@model PagedList.IPagedList<Keno.Model.Product>
+@using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách sản phẩm";
 }
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
 
 <h3>Danh sách sản phẩm</h3>
 
@@ -12,25 +15,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProductType.TypeName)
+            Loại sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductName)
+            Tên sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image)
+            Hình ảnh
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Url)
+            Liên kết
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Giá
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SalePrice)
+            Giá khuyến mãi
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsOnSale)
+            Đang khuyến mãi
         </th>
         <th></th>
     </tr>
@@ -44,16 +47,16 @@
             @Html.DisplayFor(modelItem => item.ProductName)
         </td>
         <td>
-            <img style="height: 50px; width: auto;" src="@Url.Content(item.Image)" alt="@item.ProductName"/>
+            <img style="height: 50px; width: auto;" src="@(!string.IsNullOrEmpty(item.Image) ? Url.Content(item.Image) : string.Empty)" alt="@item.ProductName" />
         </td>
         <td>
-            @Html.ActionLink(Keno.Utility.CommonFunction.ShortenString(item.Url, 20), item.Url, null, new { title = item.Url })
+            @Html.ActionLink(Keno.Utility.CommonFunction.ShortenString(item.Url ?? "#", 20), item.Url, null, new { title = item.Url })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @(string.Format("{0:n0}", item.Price))₫
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SalePrice)
+            @(string.Format("{0:n0}", item.SalePrice))₫
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsOnSale)
@@ -67,3 +70,6 @@
 }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

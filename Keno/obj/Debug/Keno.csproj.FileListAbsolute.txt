@@ -184,3 +184,7 @@ D:\Project\Keno\Keno\obj\Debug\Keno.Migrations.AddAzureDb.resources
 D:\MyProject\Keno\Keno\obj\Debug\Keno.Migrations.AddAzureDb.resources
 D:\MyProject\Keno\Keno\obj\Debug\Keno.Migrations.Updateemailforuser.resources
 D:\MyProject\Keno\Keno\obj\Debug\Keno.Migrations.SetEmailasUnique.resources
+D:\MyProject\Keno\Keno\bin\PagedList.dll
+D:\MyProject\Keno\Keno\bin\PagedList.Mvc.dll
+D:\MyProject\Keno\Keno\bin\PagedList.xml
+D:\MyProject\Keno\Keno\bin\PagedList.Mvc.xml

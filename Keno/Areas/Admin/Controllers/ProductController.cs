@@ -11,24 +11,29 @@ using Keno.ViewModel;
 using Keno.Repository;
 using System.IO;
 using System.Text;
+using PagedList;
 
 namespace Keno.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Vendor")]
     public class ProductController : Controller
     {
         private KenoContext db = new KenoContext();
 
         // GET: /Admin/Product/
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             ViewBag.Breadcrumb = new List<Breadcrumb>
             {
                 new Breadcrumb("#", "Sản phẩm")
             };
 
-            var products = db.Products.Include(p => p.ProductType);
-            return View(products.ToList());
+            bool isAdmin = User.IsInRole("Admin");
+            var products = db.Products.Where(p => isAdmin || p.UploaderID == User.Identity.Name ).Include(p => p.ProductType).OrderByDescending(p => p.ID);
+
+            int pageSize = 10;
+            int pageNumber = page;
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Admin/Product/Details/5
@@ -70,7 +75,7 @@ namespace Keno.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
-            if (product == null)
+            if (product == null || (User.IsInRole("Vendor") && product.UploaderID != User.Identity.Name))
             {
                 return HttpNotFound();
             }
@@ -89,9 +94,8 @@ namespace Keno.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        //[Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID")]
-        public ActionResult Edit(Product product, HttpPostedFileBase imgFile)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID,UploaderID")]Product product, HttpPostedFileBase imgFile)
         {
             if (ModelState.IsValid)
             {
@@ -138,7 +142,7 @@ namespace Keno.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
-            if (product == null)
+            if (product == null || (User.IsInRole("Vendor") && product.UploaderID != User.Identity.Name))
             {
                 return HttpNotFound();
             }
@@ -152,10 +156,13 @@ namespace Keno.Areas.Admin.Controllers
         {
             Product product = db.Products.Find(id);
 
-            string currentFilePath = Path.Combine(Server.MapPath("~/Content/UserImages/"), Path.GetFileName(product.Image));
-            if (System.IO.File.Exists(currentFilePath))
+            if (!string.IsNullOrEmpty(product.Image))
             {
-                System.IO.File.Delete(currentFilePath);
+                string currentFilePath = Path.Combine(Server.MapPath("~/Content/UserImages/"), Path.GetFileName(product.Image));
+                if (System.IO.File.Exists(currentFilePath))
+                {
+                    System.IO.File.Delete(currentFilePath);
+                }
             }
 
             db.Products.Remove(product);

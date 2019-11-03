@@ -16,7 +16,8 @@ namespace Keno.Controllers
         public ActionResult Index()
         {
             ViewBag.ListProductType = db.ProductTypes.ToList();
-            return View();
+            var advertisements = db.Advertisements.Take(8).ToList();
+            return View(advertisements);
         }
 
         public ActionResult About()

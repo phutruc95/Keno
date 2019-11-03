@@ -1,0 +1,58 @@
+﻿@model Keno.Model.Product
+
+@{
+    ViewBag.Title = Model.ProductName;
+    List<Keno.Model.ProductType> lstProductType = ViewBag.ListProductType;
+}
+
+<link rel="stylesheet" href="@Url.Content("~/Content/Home.css")">
+<link rel="stylesheet" href="@Url.Content("~/Content/ProductDetails.css")">
+<div class="container">
+    <div class="row">
+        @Html.Partial("_SideMenuPartial", lstProductType)
+        <div class="col-md-9 product">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="advertise-brick" style="height: 250px; background-image: url('@Url.Content(Model.Image)'), url('@Url.Content("~/Content/Images/no-image-available.jpg")'); background-size: contain"></div>
+                </div>
+                <div class="col-md-7">
+                    <div class="product-name">@Model.ProductName</div>
+                    <div class="product-price">@(string.Format("{0:n0}", Model.Price)) ₫</div>
+                    <div class="product-rating">
+                        <span><i class="fa fa-star"></i></span>
+                        <span><i class="fa fa-star"></i></span>
+                        <span><i class="fa fa-star"></i></span>
+                        <span><i class="fa fa-star"></i></span>
+                        <span><i class="fa fa-star-half"></i></span>
+                    </div>
+                    <p class="product-shortdesc">
+                        @Model.ShortDesc
+                    </p>
+                    <div class="author">Người đăng: admin</div>
+                    <div class="text-center details-btn">
+                        <span><button class="btn btn-default">Đánh giá</button></span>
+                        <span><button id="btn-purchase" class="btn btn-success">Mua hàng</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="product-desc">
+                        @Model.Desc
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#btn-purchase').on('click', function () {
+                window.open('@Model.Url');
+            });
+        });
+    </script>
+}
+

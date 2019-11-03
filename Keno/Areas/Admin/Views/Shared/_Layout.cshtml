@@ -38,7 +38,14 @@
                 <a href="@Url.Action("Index", "Product")" class="navbar-brand">
                     <small>
                         <!--<i class="fa fa-leaf"></i>-->
-                        Keno Admin
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <span>Trang quản trị Keno</span>
+                        }
+                        else if (User.IsInRole("Vendor"))
+                        {
+                            <span>Kênh người bán Keno</span>
+                        }
                     </small>
                 </a>
             </div>
@@ -121,20 +128,25 @@
                             </a>
                         </li>
 
-                        <li class="">
-                            <a href="@Url.Action("Index", "ProductType")">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Loại sản phẩm
-                            </a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="">
+                                <a href="@Url.Action("Index", "ProductType")">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Loại sản phẩm
+                                </a>
 
-                            <b class="arrow"></b>
-                        </li>
+                                <b class="arrow"></b>
+                            </li>
+                        }
                     </ul>
                 </li>
-                <li class="">
-                    <a href="widgets.html">
+                @if (User.IsInRole("Admin"))
+                {
+                                    <li class="">
+                    <a href="@Url.Action("Index", "Advertisement")">
                         <i class="menu-icon fa fa-bolt"></i>
-                        <span class="menu-text">Khuyến mãi</span>
+                        <span class="menu-text">Quảng cáo</span>
                     </a>
 
                     <b class="arrow"></b>
@@ -142,7 +154,7 @@
                 <li class="">
                     <a href="widgets.html">
                         <i class="menu-icon fa fa-star"></i>
-                        <span class="menu-text">Quảng cáo</span>
+                        <span class="menu-text">Quà tặng</span>
                     </a>
 
                     <b class="arrow"></b>
@@ -178,6 +190,15 @@
                         </li>
                     </ul>
                 </li>
+                <li class="">
+                    <a href="@Url.Action("Index", "Statistics", new { productID = 0 })">
+                        <i class="menu-icon fa fa-line-chart"></i>
+                        <span class="menu-text">Thống kê</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                }
             </ul>
 
             <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

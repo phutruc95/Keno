@@ -44,19 +44,20 @@
             </div>
             <div class="col-md-9">
                 <span class="search-group">
-                    <input type="text" class="form-control search search-group-item" id="search" placeholder="Tìm sản phẩm, tên cửa hàng" /><button class="btn-search form-control search-group-item"><i class="fa fa-search"></i></button>
+                    <input type="text" class="form-control search search-group-item" id="search" placeholder="Tìm sản phẩm" /><button class="btn-search form-control search-group-item"><i class="fa fa-search"></i></button>
                 </span>
             </div>
         </div>
     </div>
     <div class="customer-navbar container">
-        <span class="customer-menu-item"><span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span><a href="@Url.Action("Index", "Home")">Chương trình khuyến mãi</a></span> |
-        <span class="customer-menu-item"><span class="icon"><i class="fa fa-list" aria-hidden="true"></i></span><a href="@Url.Action("Index", "Product")">Danh sách sản phẩm</a></span> |
-        <span class="customer-menu-item"><span class="icon"><i class="fa fa-history" aria-hidden="true"></i></span><a href="#">Cửa hàng bạn đã xem</a></span> |
-        <span class="customer-menu-item"><span class="icon"><i class="fa fa-star" aria-hidden="true"></i></span><a href="@Url.Action("Sales", "Home")">Ưu đãi và Quà tặng</a></span>
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span><a href="@Url.Action("Index", "Home")">Quảng cáo</a></span> |
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-list" aria-hidden="true"></i></span><a href="@Url.Action("Index", "Product")">Sản phẩm</a></span> |
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-history" aria-hidden="true"></i></span><a href="#">Sản phẩm đã xem</a></span> |
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-star" aria-hidden="true"></i></span><a href="@Url.Action("Sales", "Home")">Quà tặng</a></span>
     </div>
     <div class="body-content">
         @RenderBody()
+        <button onclick="topFunction()" id="top-btn" class="top-btn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
         <hr />
         <footer class="container">
             <p>&copy; @DateTime.Now.Year - Keno Corp., Ltd</p>
@@ -71,7 +72,36 @@
             $('img').on("error", function () {
                 this.src ="@Url.Content("~/Content/Images/no-image-available.jpg")";
             });
+
+            window.onscroll = function () { scrollFunction() };
+
+            $('#search').on('keydown', function (e) {
+                if (e.keyCode == 13) {
+                    searchProduct($('#search').val());
+                }
+            });
+            $('.btn-search').on('click', function () {
+                searchProduct($('#search').val());
+            });
         })
+
+        var topButton = document.getElementById("top-btn");
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                topButton.style.display = "block";
+            } else {
+                topButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        function searchProduct(searchStr) {
+            window.location.href = '@Url.Action("Index", "Product")' + '?searchStr=' + searchStr;
+        }
     </script>
 </body>
 </html>
