@@ -83,6 +83,14 @@
             $('.btn-search').on('click', function () {
                 searchProduct($('#search').val());
             });
+
+            $('li.product-type').on('click', function () {
+                $('li.product-type').removeClass('active');
+                $(this).addClass('active');
+
+                var typeID = $(this).data('id');
+                window.location.href = "@Url.Action("Index", "Product")" + "?typeid=" + typeID;
+            });
         })
 
         var topButton = document.getElementById("top-btn");

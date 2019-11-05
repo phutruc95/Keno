@@ -95,7 +95,7 @@ namespace Keno.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ProductTypeID,UploaderID")]Product product, HttpPostedFileBase imgFile)
+        public ActionResult Edit([Bind(Include = "ID,ProductName,Image,Url,Price,SalePrice,IsOnSale,ShortDesc,Desc,ProductTypeID,UploaderID")]Product product, HttpPostedFileBase imgFile)
         {
             if (ModelState.IsValid)
             {

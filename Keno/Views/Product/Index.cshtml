@@ -29,7 +29,7 @@
                                 <span><i class="fa fa-star"></i></span>
                                 <span><i class="fa fa-star"></i></span>
                                 <span><i class="fa fa-star"></i></span>
-                                <span><i class="fa fa-star-half"></i></span>
+                                <span><i class="fa fa-star-half-o"></i></span>
                             </div>
                             <p class="product-shortdesc" align="justify">
                                 @(Keno.Utility.CommonFunction.ShortenString(product.ShortDesc, 100))
@@ -50,16 +50,4 @@
     new { page, searchStr = Request.QueryString["searchStr"], sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
 
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $('li.product-type').on('click', function () {
-                $('li.product-type').removeClass('active');
-                $(this).addClass('active');
 
-                var typeID = $(this).data('id');
-                window.location.href = "@Url.Action("Index", "Product")" + "?typeid=" + typeID;
-            });
-        });
-    </script>
-}

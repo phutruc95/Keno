@@ -13,14 +13,18 @@ namespace Keno
     public class MvcApplication : System.Web.HttpApplication
     {
         KenoContext db = new KenoContext();
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
 
-            var record = db.Statistics.Where(r => r.AccessDate.Day == DateTime.Now.Day 
+        protected void Session_Start()
+        {
+            var record = db.Statistics.Where(r => r.AccessDate.Day == DateTime.Now.Day
                                             && r.AccessDate.Month == DateTime.Now.Month
                                             && r.AccessDate.Year == DateTime.Now.Year).FirstOrDefault();
             if (record == null)
