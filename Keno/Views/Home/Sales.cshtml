@@ -1,5 +1,9 @@
-﻿@{
-    ViewBag.Title = "Ưu đãi và Quà tặng";
+﻿@model IEnumerable<Keno.Model.Offer>
+@{
+    ViewBag.Title = "Mã giảm giá";
+    List<Keno.Model.Offer> LstOffers = Model != null ? Model.ToList() : new List<Keno.Model.Offer>();
+    Keno.Model.UserProperty userProperty = ViewBag.UserProperty ?? new Keno.Model.UserProperty() { AttendanceList = "0000000" };
+    var dayOfWeek = (int)DateTime.Now.DayOfWeek;
 }
 
 <link rel="stylesheet" href="@Url.Content("~/Content/Sales.css")">
@@ -9,41 +13,41 @@
             <div class="attendance-bonus text-center">
                 <h4>Xu liền tay đổi quà ngay</h4>
                 <h5>Ưu đãi cùng Keno xu</h5>
-                <h3>0 xu</h3>
+                <h3><span id="leftcoins">@string.Format("{0:0.#}", userProperty.Coins)</span> xu</h3>
                 <div class="check-attendance">
-                    <label class="attendance-container">
+                    <label class="attendance-container @(dayOfWeek == 1 ? "" : "disabled")" id="day1">
                         Thứ Hai
-                        <input type="checkbox" checked="checked">
+                        <input type="checkbox" @(dayOfWeek == 1 ? (userProperty.AttendanceList[1] == '1' ? "checked disabled" : "") : "disabled")>
                         <span class="checkmark"></span>
                     </label>
-                    <label class="attendance-container">
+                    <label class="attendance-container @(dayOfWeek == 2 ? "" : "disabled")" id="day2">
                         Thứ Ba
-                        <input type="checkbox">
+                        <input type="checkbox" @(dayOfWeek == 2 ? (userProperty.AttendanceList[2] == '1' ? "checked disabled" : "") : "disabled")>
                         <span class="checkmark"></span>
                     </label>
-                    <label class="attendance-container">
+                    <label class="attendance-container @(dayOfWeek == 3 ? "" : "disabled")" id="day3">
                         Thứ Tư
-                        <input type="checkbox">
+                        <input type="checkbox" @(dayOfWeek == 3 ? (userProperty.AttendanceList[3] == '1' ? "checked disabled" : "") : "disabled")>
                         <span class="checkmark"></span>
                     </label>
-                    <label class="attendance-container">
+                    <label class="attendance-container @(dayOfWeek == 4 ? "" : "disabled")" id="day4">
                         Thứ Năm
-                        <input type="checkbox">
+                        <input type="checkbox" @(dayOfWeek == 4 ? (userProperty.AttendanceList[4] == '1' ? "checked disabled" : "") : "disabled")>
                         <span class="checkmark"></span>
                     </label>
-                    <label class="attendance-container">
+                    <label class="attendance-container @(dayOfWeek == 5 ? "" : "disabled")" id="day5">
                         Thứ Sáu
-                        <input type="checkbox">
+                        <input type="checkbox" @(dayOfWeek == 5 ? (userProperty.AttendanceList[5] == '1' ? "checked disabled" : "") : "disabled")>
                         <span class="checkmark"></span>
                     </label>
-                    <label class="attendance-container">
+                    <label class="attendance-container @(dayOfWeek == 6 ? "" : "disabled")" id="day6">
                         Thứ Bảy
-                        <input type="checkbox">
+                        <input type="checkbox" @(dayOfWeek == 6 ? (userProperty.AttendanceList[6] == '1' ? "checked disabled" : "") : "disabled")>
                         <span class="checkmark"></span>
                     </label>
-                    <label class="attendance-container">
+                    <label class="attendance-container @(dayOfWeek == 0 ? "" : "disabled")" id="day0">
                         Chủ Nhật
-                        <input type="checkbox">
+                        <input type="checkbox" @(dayOfWeek == 0 ? (userProperty.AttendanceList[0] == '1' ? "checked disabled" : "") : "disabled")>
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -63,11 +67,10 @@
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item active" style="background-image: url(https://matviet.vn/wp-content/uploads/2018/08/Banner-Face.jpg)"></div>
-
-                        <div class="item" style="background-image: url(https://naptien24h.vn/Uploads/2019-07/20190709090722viettel-va-mobifone-khuyen.jpg)"></div>
-
-                        <div class="item" style="background-image: url(https://media.vietteltelecom.vn/upload/ckfinder/images/Khuyen%20mai%20ngay_10_04-04%20625x351.jpg)"></div>
+                        @for (int i = 0; i < LstOffers.Count; i++)
+                        {
+                            <div class="item @(i == 0 ? "active" : "")" style="background-image: url('@Url.Content(LstOffers[i].Image)')"></div>
+                        }
                     </div>
 
                     <!-- Left and right controls -->
@@ -82,44 +85,111 @@
                 </div>
             </div>
             <div style="margin-top: 30px;">
-                <div class="col-md-4">
-                    <div class="advertise-item">
-                        <div class="advertise-brick" style="height:100px; background-image: url(https://blog.ipleaders.in/wp-content/uploads/2016/07/download-10.jpg)"></div>
-                        <div class="text-right advertise-information">500 xu | Đổi</div>
+                @foreach (var offer in LstOffers)
+                {
+                    <div class="col-md-4">
+                        <div class="advertise-item">
+                            <div class="advertise-brick" style="height:100px; background-image: url('@Url.Content(offer.Image)')"></div>
+                            <div class="text-right advertise-information @(userProperty.Coins >= offer.CoinsConsumed ? "coins-chargable" : "")" data-offerid="@offer.ID" data-percent="@offer.Percent" data-coinsconsumed="@string.Format("{0:n0}", offer.CoinsConsumed)">@(string.Format("{0:n0}", offer.CoinsConsumed)) xu | Đổi</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="advertise-item">
-                        <div class="advertise-brick" style="height:100px; background-image: url(https://blog.ipleaders.in/wp-content/uploads/2016/07/download-10.jpg)"></div>
-                        <div class="text-right advertise-information">500 xu | Đổi</div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="advertise-item">
-                        <div class="advertise-brick" style="height:100px; background-image: url(https://blog.ipleaders.in/wp-content/uploads/2016/07/download-10.jpg)"></div>
-                        <div class="text-right advertise-information">500 xu | Đổi</div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="advertise-item">
-                        <div class="advertise-brick" style="height:100px; background-image: url(https://blog.ipleaders.in/wp-content/uploads/2016/07/download-10.jpg)"></div>
-                        <div class="text-right advertise-information">500 xu | Đổi</div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="advertise-item">
-                        <div class="advertise-brick" style="height:100px; background-image: url(https://blog.ipleaders.in/wp-content/uploads/2016/07/download-10.jpg)"></div>
-                        <div class="text-right advertise-information">500 xu | Đổi</div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="advertise-item">
-                        <div class="advertise-brick" style="height:100px; background-image: url(https://blog.ipleaders.in/wp-content/uploads/2016/07/download-10.jpg)"></div>
-                        <div class="text-right advertise-information">500 xu | Đổi</div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="charge-confirm" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xác nhận</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn đổi?</p>
+                <div>Mã giảm: <span id="percent"></span>%</div>
+                <div>Số xu cần đổi: <span id="coins-consumed"></span></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-chargesalecode" type="button" class="btn btn-success" data-dismiss="modal">Đồng ý</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('.coins-chargable').on('click', function () {
+                $('#percent').html($(this).data('percent'));
+                $('#coins-consumed').html($(this).data('coinsconsumed'));
+                $('#btn-chargesalecode').attr('onclick', 'chargeSaleCode(' + $(this).data('offerid') + ')');
+                $('#charge-confirm').modal('show');
+            });
+            $('.attendance-container input').on('click', function () {
+                if ($(this).is(':checked')) {
+                    checkAttendance();
+                    $(this).attr('disabled', true);
+                }
+            });
+        });
+
+        function chargeSaleCode(offerID) {
+            $.ajax(
+            {
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("ChargeSaleCode", "Home")',
+                data: JSON.stringify({ offerID: offerID }),
+                success: function (response) {
+
+                    console.log(response);
+                    updateSales(response.leftcoins);
+
+                },
+                error: function (error) {
+                    alert(err.msg);
+                }
+            });
+        }
+        function updateSales(leftcoins)
+        {
+            $('#leftcoins').html(leftcoins);
+            $('.coins-chargable').each(function (i, item) {
+                var coinsconsumed = $(item).data('coinsconsumed');
+                if (leftcoins < coinsconsumed) {
+                    $(item).removeClass('coins-chargable');
+                    $(item).unbind('click');
+                }
+            });
+        }
+
+        function checkAttendance() {
+            $.ajax(
+            {
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("CheckAttendance", "Home")',
+                data: JSON.stringify({ }),
+                success: function (response) {
+
+                    updateSales(response.leftcoins);
+                    console.log(response);
+
+
+                },
+                error: function (error) {
+                    alert(err.msg);
+                }
+            });
+        }
+    </script>
+}

@@ -168,6 +168,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdvertisementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OfferController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
@@ -198,12 +199,33 @@
     <Compile Include="Migrations\201910291250352_Set Email as Unique.Designer.cs">
       <DependentUpon>201910291250352_Set Email as Unique.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911101133422_Add attendance list.cs" />
+    <Compile Include="Migrations\201911101133422_Add attendance list.Designer.cs">
+      <DependentUpon>201911101133422_Add attendance list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101211500_Update attendance list.cs" />
+    <Compile Include="Migrations\201911101211500_Update attendance list.Designer.cs">
+      <DependentUpon>201911101211500_Update attendance list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101214348_Update Attendance list max length.cs" />
+    <Compile Include="Migrations\201911101214348_Update Attendance list max length.Designer.cs">
+      <DependentUpon>201911101214348_Update Attendance list max length.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101303171_Remove Addtendance list and Coins from AspNetUser.cs" />
+    <Compile Include="Migrations\201911101303171_Remove Addtendance list and Coins from AspNetUser.Designer.cs">
+      <DependentUpon>201911101303171_Remove Addtendance list and Coins from AspNetUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101328316_Update model 11102019.cs" />
+    <Compile Include="Migrations\201911101328316_Update model 11102019.Designer.cs">
+      <DependentUpon>201911101328316_Update model 11102019.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utility\CommonFunction.cs" />
+    <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="ViewModel\Breadcrumb.cs" />
     <Compile Include="ViewModel\Email.cs" />
   </ItemGroup>
@@ -382,6 +404,9 @@
     <Content Include="Areas\Admin\Views\Advertisement\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Statistics\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Offer\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Offer\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Offer\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\keno - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Keno - FTP.pubxml" />
@@ -424,7 +449,6 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Sales.cshtml" />
@@ -473,6 +497,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910291250352_Set Email as Unique.resx">
       <DependentUpon>201910291250352_Set Email as Unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101133422_Add attendance list.resx">
+      <DependentUpon>201911101133422_Add attendance list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101211500_Update attendance list.resx">
+      <DependentUpon>201911101211500_Update attendance list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101214348_Update Attendance list max length.resx">
+      <DependentUpon>201911101214348_Update Attendance list max length.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101303171_Remove Addtendance list and Coins from AspNetUser.resx">
+      <DependentUpon>201911101303171_Remove Addtendance list and Coins from AspNetUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101328316_Update model 11102019.resx">
+      <DependentUpon>201911101328316_Update model 11102019.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

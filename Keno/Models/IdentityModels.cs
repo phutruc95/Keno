@@ -10,8 +10,6 @@ namespace Keno.Models
         [MaxLength(250)]
         [Index(IsUnique = true)]
         public virtual string Email { get; set; }
-        public virtual int ShopID { get; set; }
-        public virtual string SaleCodes { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -135,3 +135,8 @@ D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.SetEmailasUnique.resources
 D:\MyProject\Keno\Keno\obj\Release\Keno.csproj.GenerateResource.Cache
 D:\MyProject\Keno\Keno\obj\Release\Keno.dll
 D:\MyProject\Keno\Keno\obj\Release\Keno.pdb
+D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.Addattendancelist.resources
+D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.Updateattendancelist.resources
+D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.UpdateAttendancelistmaxlength.resources
+D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.RemoveAddtendancelistandCoinsfromAspNetUser.resources
+D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.Updatemodel11102019.resources

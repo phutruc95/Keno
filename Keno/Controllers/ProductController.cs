@@ -44,6 +44,7 @@ namespace Keno.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.ListSaleCodes = db.SaleCodes.Where(s => s.Username == User.Identity.Name).ToList();
             ViewBag.ListProductType = db.ProductTypes.ToList();
 
             return View(product);

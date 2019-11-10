@@ -23,7 +23,15 @@
                         <div class="product">
                             <div class="advertise-brick" style="height: 250px; background-image: url('@Url.Content(product.Image)'), url('@Url.Content("~/Content/Images/no-image-available.jpg")'); background-size: contain"></div>
                             <div class="product-name">@product.ProductName</div>
-                            <div class="product-price">@(string.Format("{0:n0}", product.Price)) ₫</div>
+                            @if (product.IsOnSale)
+                            {
+                                <div class="product-price">@(string.Format("{0:n0}", product.SalePrice)) ₫</div>
+                                <div class="product-sale-price">@(string.Format("{0:n0}", product.Price)) ₫</div>
+                            }
+                            else
+                            {
+                                <div class="product-price">@(string.Format("{0:n0}", product.Price)) ₫</div>
+                            }
                             <div class="product-rating">
                                 <span><i class="fa fa-star"></i></span>
                                 <span><i class="fa fa-star"></i></span>
@@ -47,7 +55,7 @@
     </div>
 
     @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, searchStr = Request.QueryString["searchStr"], sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        new { page, searchStr = Request.QueryString["searchStr"], typeID = Request.QueryString["typeID"], sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
 
 

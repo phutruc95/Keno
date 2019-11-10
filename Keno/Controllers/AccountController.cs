@@ -377,6 +377,8 @@ namespace Keno.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            //identity.AddClaim(new Claim("Coins", string.Format("{0:n0}", user.Coins)));
+            //identity.AddClaim(new Claim("AttendanceList", user.AttendanceList));
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 

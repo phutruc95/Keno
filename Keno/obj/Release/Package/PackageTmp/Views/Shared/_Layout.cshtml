@@ -31,7 +31,6 @@
                     }
                     <li>@Html.ActionLink("Thông báo", "About", "Home")</li>
                     <li>@Html.ActionLink("Trợ giúp", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Về chúng tôi", "About", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -53,7 +52,7 @@
         <span class="customer-menu-item"><span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span><a href="@Url.Action("Index", "Home")">Quảng cáo</a></span> |
         <span class="customer-menu-item"><span class="icon"><i class="fa fa-list" aria-hidden="true"></i></span><a href="@Url.Action("Index", "Product")">Sản phẩm</a></span> |
         <span class="customer-menu-item"><span class="icon"><i class="fa fa-history" aria-hidden="true"></i></span><a href="#">Sản phẩm đã xem</a></span> |
-        <span class="customer-menu-item"><span class="icon"><i class="fa fa-star" aria-hidden="true"></i></span><a href="@Url.Action("Sales", "Home")">Quà tặng</a></span>
+        <span class="customer-menu-item"><span class="icon"><i class="fa fa-star" aria-hidden="true"></i></span><a href="@Url.Action("Sales", "Home")">Mã giảm giá</a></span>
     </div>
     <div class="body-content">
         @RenderBody()
@@ -82,6 +81,14 @@
             });
             $('.btn-search').on('click', function () {
                 searchProduct($('#search').val());
+            });
+
+            $('li.product-type').on('click', function () {
+                $('li.product-type').removeClass('active');
+                $(this).addClass('active');
+
+                var typeID = $(this).data('id');
+                window.location.href = "@Url.Action("Index", "Product")" + "?typeid=" + typeID;
             });
         })
 

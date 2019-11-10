@@ -1,0 +1,20 @@
+﻿@model Keno.Model.Offer
+
+@{
+    ViewBag.Title = "Mã giảm giá";
+}
+
+
+<h4>Bạn có chắc chắn muốn xóa "@Model.Desc"</h4>
+<div>
+    <hr />
+    
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+    
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>

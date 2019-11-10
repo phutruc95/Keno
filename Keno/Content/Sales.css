@@ -89,3 +89,6 @@
         font-size: 16px;
         color: #f46715;
     }
+    .advertise-item .advertise-information.coins-chargable {
+        color: blue;
+    }

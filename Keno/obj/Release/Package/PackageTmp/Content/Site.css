@@ -150,6 +150,20 @@ h3 {
   border-radius: 4px;
 }
 
+
+.btn-success {
+    background-color: #ff720e;
+    border-color: #ff720e;
+}
+    .btn-success:hover {
+        background-color: #e16a16;
+        border-color: #e16a16;
+    }
+
+.disabled {
+    color: #ccc;
+}
+
 @media only screen and (max-width: 776px) {
     .search {
         width: 90%;

@@ -11,6 +11,12 @@
     padding: 0 5px;
     text-align: center;
 }
+.product .product-sale-price {
+    color: #a2a2a2;
+    text-decoration: line-through;
+    font-size: 12px;
+    text-align: center;
+}
 .product .product-shortdesc {
     color: #333333;
     padding: 5px;
@@ -30,8 +36,4 @@
 }
 .product .details-btn button {
     margin: 0 10px;
-}
-.product .details-btn button.btn-success {
-    background-color: #ff720e;
-    border-color: #ff720e;
 }

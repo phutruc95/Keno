@@ -75,6 +75,22 @@
     <Compile Include="Migrations\201911031702016_Add AccessDate for Statistics.Designer.cs">
       <DependentUpon>201911031702016_Add AccessDate for Statistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911100334455_Update salecode.cs" />
+    <Compile Include="Migrations\201911100334455_Update salecode.Designer.cs">
+      <DependentUpon>201911100334455_Update salecode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101135114_Add attendance and update sale code.cs" />
+    <Compile Include="Migrations\201911101135114_Add attendance and update sale code.Designer.cs">
+      <DependentUpon>201911101135114_Add attendance and update sale code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101324081_Add User Property.cs" />
+    <Compile Include="Migrations\201911101324081_Add User Property.Designer.cs">
+      <DependentUpon>201911101324081_Add User Property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101635354_Update sale codes as a field of user property.cs" />
+    <Compile Include="Migrations\201911101635354_Update sale codes as a field of user property.Designer.cs">
+      <DependentUpon>201911101635354_Update sale codes as a field of user property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -109,6 +125,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911031702016_Add AccessDate for Statistics.resx">
       <DependentUpon>201911031702016_Add AccessDate for Statistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911100334455_Update salecode.resx">
+      <DependentUpon>201911100334455_Update salecode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101135114_Add attendance and update sale code.resx">
+      <DependentUpon>201911101135114_Add attendance and update sale code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101324081_Add User Property.resx">
+      <DependentUpon>201911101324081_Add User Property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101635354_Update sale codes as a field of user property.resx">
+      <DependentUpon>201911101635354_Update sale codes as a field of user property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

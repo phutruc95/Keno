@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="~/assets/css/ace-skins.min.css" />
     <link rel="stylesheet" href="~/assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Content/Site.css")">
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Content/Images/logo.ico")" />
     <script src="~/assets/js/ace-extra.min.js"></script>
 </head>
 
@@ -152,9 +153,9 @@
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="widgets.html">
+                    <a href="@Url.Action("Index", "Offer")">
                         <i class="menu-icon fa fa-star"></i>
-                        <span class="menu-text">Quà tặng</span>
+                        <span class="menu-text">Mã giảm giá</span>
                     </a>
 
                     <b class="arrow"></b>

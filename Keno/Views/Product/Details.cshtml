@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = Model.ProductName;
     List<Keno.Model.ProductType> lstProductType = ViewBag.ListProductType;
+    List<Keno.Model.SaleCode> lstSaleCodes = ViewBag.ListSaleCodes ?? new List<Keno.Model.SaleCode>();
 }
 
 <link rel="stylesheet" href="@Url.Content("~/Content/Home.css")">
@@ -14,10 +15,23 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="advertise-brick" style="height: 250px; background-image: url('@Url.Content(Model.Image)'), url('@Url.Content("~/Content/Images/no-image-available.jpg")'); background-size: contain"></div>
+                    <div>MÃ GIẢM GIÁ</div>
+                    @foreach (var salecode in lstSaleCodes)
+                    {
+                        <div><b>@salecode.Code</b><span>: - @salecode.Percent %</span></div>
+                    }
                 </div>
                 <div class="col-md-7">
                     <div class="product-name">@Model.ProductName</div>
-                    <div class="product-price">@(string.Format("{0:n0}", Model.Price)) ₫</div>
+                    @if (Model.IsOnSale)
+                    {
+                        <div class="product-price">@(string.Format("{0:n0}", Model.SalePrice)) ₫</div>
+                        <div class="product-sale-price">@(string.Format("{0:n0}", Model.Price)) ₫</div>
+                    }
+                    else
+                    {
+                        <div class="product-price">@(string.Format("{0:n0}", Model.Price)) ₫</div>
+                    }
                     <div class="product-rating">
                         <span><i class="fa fa-star"></i></span>
                         <span><i class="fa fa-star"></i></span>
