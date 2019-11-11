@@ -127,11 +127,9 @@
     <script>
         $(document).ready(function () {
             $('.coins-chargable').on('click', function () {
-                $('#percent').html($(this).data('percent'));
-                $('#coins-consumed').html($(this).data('coinsconsumed'));
-                $('#btn-chargesalecode').attr('onclick', 'chargeSaleCode(' + $(this).data('offerid') + ')');
-                $('#charge-confirm').modal('show');
+                confirmChargingSaleCode($(this))
             });
+
             $('.attendance-container input').on('click', function () {
                 if ($(this).is(':checked')) {
                     checkAttendance();
@@ -140,14 +138,24 @@
             });
         });
 
+        function confirmChargingSaleCode(item) {
+            $('#percent').html(item.data('percent'));
+            $('#coins-consumed').html(item.data('coinsconsumed'));
+            $('#btn-chargesalecode').attr('onclick', 'chargeSaleCode(' + item.data('offerid') + ')');
+            $('#charge-confirm').modal('show');
+        }
+
         function chargeSaleCode(offerID) {
-            $.ajax(
-            {
+            $.ajax({
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
                 url: '@Url.Action("ChargeSaleCode", "Home")',
                 data: JSON.stringify({ offerID: offerID }),
+                beforeSend: function () {
+                    $('.loading').show();
+                    $('#leftcoins').slideUp();
+                },
                 success: function (response) {
 
                     console.log(response);
@@ -156,12 +164,17 @@
                 },
                 error: function (error) {
                     alert(err.msg);
+                    $('#leftcoins').slideDown();
+                },
+                complete: function () {
+                    $('.loading').hide();
                 }
             });
         }
         function updateSales(leftcoins)
         {
             $('#leftcoins').html(leftcoins);
+            $('#leftcoins').slideDown();
             $('.coins-chargable').each(function (i, item) {
                 var coinsconsumed = $(item).data('coinsconsumed');
                 if (leftcoins < coinsconsumed) {
@@ -169,25 +182,39 @@
                     $(item).unbind('click');
                 }
             });
+            $('.advertise-item .advertise-information').each(function (i, item) {
+                var coinsconsumed = $(item).data('coinsconsumed');
+                if (leftcoins < coinsconsumed && $(item).hasClass('coins-chargable')) {
+                    $(item).removeClass('coins-chargable');
+                    $(item).unbind('click');
+                }
+                else if (leftcoins >= coinsconsumed && !($(item).hasClass('coins-chargable'))) {
+                    $(item).addClass('coins-chargable');
+                    $(item).attr('onclick', 'confirmChargingSaleCode($(this))');
+                }
+            });
         }
 
         function checkAttendance() {
-            $.ajax(
-            {
+            $.ajax({
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
                 url: '@Url.Action("CheckAttendance", "Home")',
-                data: JSON.stringify({ }),
+                data: JSON.stringify({}),
+                beforeSend: function () {
+                    $('.loading').show();
+                    $('#leftcoins').slideUp();
+                },
                 success: function (response) {
-
                     updateSales(response.leftcoins);
-                    console.log(response);
-
-
                 },
                 error: function (error) {
                     alert(err.msg);
+                    $('#leftcoins').slideDown();
+                },
+                complete: function () {
+                    $('.loading').hide();
                 }
             });
         }

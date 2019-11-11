@@ -42,3 +42,9 @@ D:\MyProject\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Updates
 D:\MyProject\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Addattendanceandupdatesalecode.resources
 D:\MyProject\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.AddUserProperty.resources
 D:\MyProject\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Updatesalecodesasafieldofuserproperty.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.AddstatisticsandUploader.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.AddAccessDateforStatistics.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Updatesalecode.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Addattendanceandupdatesalecode.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.AddUserProperty.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Updatesalecodesasafieldofuserproperty.resources

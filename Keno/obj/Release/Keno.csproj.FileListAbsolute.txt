@@ -140,3 +140,12 @@ D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.Updateattendancelist.resource
 D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.UpdateAttendancelistmaxlength.resources
 D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.RemoveAddtendancelistandCoinsfromAspNetUser.resources
 D:\MyProject\Keno\Keno\obj\Release\Keno.Migrations.Updatemodel11102019.resources
+D:\Project\Keno\Keno\bin\PagedList.dll
+D:\Project\Keno\Keno\bin\PagedList.Mvc.dll
+D:\Project\Keno\Keno\bin\PagedList.xml
+D:\Project\Keno\Keno\bin\PagedList.Mvc.xml
+D:\Project\Keno\Keno\obj\Release\Keno.Migrations.Addattendancelist.resources
+D:\Project\Keno\Keno\obj\Release\Keno.Migrations.Updateattendancelist.resources
+D:\Project\Keno\Keno\obj\Release\Keno.Migrations.UpdateAttendancelistmaxlength.resources
+D:\Project\Keno\Keno\obj\Release\Keno.Migrations.RemoveAddtendancelistandCoinsfromAspNetUser.resources
+D:\Project\Keno\Keno\obj\Release\Keno.Migrations.Updatemodel11102019.resources
