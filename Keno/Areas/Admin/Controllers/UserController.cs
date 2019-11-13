@@ -1,6 +1,12 @@
-﻿using System;
+﻿using Keno.Models;
+using Keno.ViewModel;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,90 +15,91 @@ namespace Keno.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         //
         // GET: /Admin/User/
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb("#", "Người dùng")
+            };
+
+            return View(db.Users.ToList());
         }
 
-        //
-        // GET: /Admin/User/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
         // GET: /Admin/User/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb(Url.Action("Index"), "Người dùng"),
+                new Breadcrumb("#", "Thêm mới")
+            };
+
+            var user = new ApplicationUser();
+            ViewBag.ProductTypeID = new SelectList(db.Roles, "Id", "Name");
+
+            return View("Edit", user);
         }
 
-        //
-        // POST: /Admin/User/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        //  POST: /Admin/User/Edit
+        public ActionResult Edit(string id)
         {
-            try
+            if (string.IsNullOrEmpty(id))
             {
-                // TODO: Add insert logic here
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
 
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb(Url.Action("Index"), "Người dùng"),
+                new Breadcrumb("#", "Chỉnh sửa")
+            };
+
+            ViewBag.ProductTypeID = new SelectList(db.Roles, "Id", "Name");
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ApplicationUser user, bool isResetPassword = false)
+        {
+            if (ModelState.IsValid)
+            {
+                string password = string.Empty;
+                UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                if (string.IsNullOrEmpty(user.PasswordHash))
+                {
+                    isResetPassword = true;
+
+                    password = Utility.CommonFunction.RandomString(10);
+                    userManager.Create(user, password);
+                }
+                else
+                {
+                    if (isResetPassword)
+                    {
+                        password = Utility.CommonFunction.RandomString(10);
+                        user.PasswordHash = (new PasswordHasher()).HashPassword(password);
+                    }
+
+                    db.Entry(user).State = EntityState.Modified;
+                }
+
+                db.SaveChanges();
+
+                if (isResetPassword) return View("ReviewPassword", (object)password);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        //
-        // GET: /Admin/User/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Admin/User/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Admin/User/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Admin/User/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(user);
         }
     }
 }

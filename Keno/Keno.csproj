@@ -408,6 +408,9 @@
     <Content Include="Areas\Admin\Views\Offer\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Offer\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Offer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ReviewPassword.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\keno - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Keno - FTP.pubxml" />
@@ -463,7 +466,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\User\" />
     <Folder Include="Content\UserImages\" />
   </ItemGroup>
   <ItemGroup>

@@ -102,7 +102,7 @@
                     <a href="@Url.Action("Index", "Home", new { area = "" })">
                         <i class="menu-icon fa fa-exchange"></i>
                         <span class="menu-text">
-                            Trang người dùng
+                            Trang bán hàng
                         </span>
                     </a>
 
@@ -161,35 +161,12 @@
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="#" class="dropdown-toggle">
+                    <a href="@Url.Action("Index", "User")">
                         <i class="menu-icon fa fa-user"></i>
-                        <span class="menu-text">
-                            Người dùng
-                        </span>
-
-                        <b class="arrow fa fa-angle-down"></b>
+                        <span class="menu-text">Tài khoản người dùng</span>
                     </a>
 
                     <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="#" class="dropdown-toggle">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Danh sách người dùng
-                                <b class="arrow"></b>
-                            </a>
-                        </li>
-
-                        <li class="">
-                            <a href="typography.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Phân quyền
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
                 </li>
                 <li class="">
                     <a href="@Url.Action("Index", "Statistics", new { productID = 0 })">

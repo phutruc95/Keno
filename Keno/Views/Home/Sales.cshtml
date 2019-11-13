@@ -17,37 +17,37 @@
                 <div class="check-attendance">
                     <label class="attendance-container @(dayOfWeek == 1 ? "" : "disabled")" id="day1">
                         Thứ Hai
-                        <input type="checkbox" @(dayOfWeek == 1 ? (userProperty.AttendanceList[1] == '1' ? "checked disabled" : "") : "disabled")>
+                        <input type="checkbox" @(dayOfWeek == 1 ? "" : "disabled") @(userProperty.AttendanceList[1] == '1' ? "checked" : "")>
                         <span class="checkmark"></span>
                     </label>
                     <label class="attendance-container @(dayOfWeek == 2 ? "" : "disabled")" id="day2">
                         Thứ Ba
-                        <input type="checkbox" @(dayOfWeek == 2 ? (userProperty.AttendanceList[2] == '1' ? "checked disabled" : "") : "disabled")>
+                        <input type="checkbox" @(dayOfWeek == 2 ? "" : "disabled") @(userProperty.AttendanceList[2] == '1' ? "checked" : "")>
                         <span class="checkmark"></span>
                     </label>
                     <label class="attendance-container @(dayOfWeek == 3 ? "" : "disabled")" id="day3">
                         Thứ Tư
-                        <input type="checkbox" @(dayOfWeek == 3 ? (userProperty.AttendanceList[3] == '1' ? "checked disabled" : "") : "disabled")>
+                        <input type="checkbox" @(dayOfWeek == 3 ? "" : "disabled") @(userProperty.AttendanceList[3] == '1' ? "checked" : "")>
                         <span class="checkmark"></span>
                     </label>
                     <label class="attendance-container @(dayOfWeek == 4 ? "" : "disabled")" id="day4">
                         Thứ Năm
-                        <input type="checkbox" @(dayOfWeek == 4 ? (userProperty.AttendanceList[4] == '1' ? "checked disabled" : "") : "disabled")>
+                        <input type="checkbox" @(dayOfWeek == 4 ? "" : "disabled") @(userProperty.AttendanceList[4] == '1' ? "checked" : "")>
                         <span class="checkmark"></span>
                     </label>
                     <label class="attendance-container @(dayOfWeek == 5 ? "" : "disabled")" id="day5">
                         Thứ Sáu
-                        <input type="checkbox" @(dayOfWeek == 5 ? (userProperty.AttendanceList[5] == '1' ? "checked disabled" : "") : "disabled")>
+                        <input type="checkbox" @(dayOfWeek == 5 ? "" : "disabled") @(userProperty.AttendanceList[5] == '1' ? "checked" : "")>
                         <span class="checkmark"></span>
                     </label>
                     <label class="attendance-container @(dayOfWeek == 6 ? "" : "disabled")" id="day6">
                         Thứ Bảy
-                        <input type="checkbox" @(dayOfWeek == 6 ? (userProperty.AttendanceList[6] == '1' ? "checked disabled" : "") : "disabled")>
+                        <input type="checkbox" @(dayOfWeek == 6 ? "" : "disabled") @(userProperty.AttendanceList[6] == '1' ? "checked" : "")>
                         <span class="checkmark"></span>
                     </label>
                     <label class="attendance-container @(dayOfWeek == 0 ? "" : "disabled")" id="day0">
                         Chủ Nhật
-                        <input type="checkbox" @(dayOfWeek == 0 ? (userProperty.AttendanceList[0] == '1' ? "checked disabled" : "") : "disabled")>
+                        <input type="checkbox" @(dayOfWeek == 0 ? "" : "disabled") @(userProperty.AttendanceList[0] == '1' ? "checked" : "")>
                         <span class="checkmark"></span>
                     </label>
                 </div>

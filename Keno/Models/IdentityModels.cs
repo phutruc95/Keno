@@ -9,6 +9,8 @@ namespace Keno.Models
     {
         [MaxLength(250)]
         [Index(IsUnique = true)]
+        [EmailAddress(ErrorMessage = "Định dạng email không đúng")]
+        [Required(ErrorMessage = "Hãy nhập email")]
         public virtual string Email { get; set; }
     }
 
