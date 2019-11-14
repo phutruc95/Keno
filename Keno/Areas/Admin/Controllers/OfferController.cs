@@ -13,7 +13,7 @@ using System.IO;
 
 namespace Keno.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class OfferController : Controller
     {
         private KenoContext db = new KenoContext();

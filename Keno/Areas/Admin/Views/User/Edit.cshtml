@@ -10,45 +10,82 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.PasswordHash)
-        @Html.HiddenFor(model => model.SecurityStamp)
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.PasswordHash)
+    @Html.HiddenFor(model => model.SecurityStamp)
 
-        <div class="form-group">
-            @Html.Label("Tên đăng nhập", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.UserName))
-                {
-                    @Html.TextBoxFor(model => model.UserName, new { disabled = "disabled" })
-                }
-                else
-                {
-                    @Html.EditorFor(model => model.UserName)
-                }
+    <div class="form-group">
+        @Html.Label("Tên đăng nhập", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @if (!string.IsNullOrEmpty(Model.UserName))
+            {
+                @Html.TextBoxFor(model => model.UserName, new { @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.EditorFor(model => model.UserName)
+            }
 
-                @Html.ValidationMessageFor(model => model.UserName)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+            @Html.ValidationMessageFor(model => model.UserName)
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Đặt lại mật khẩu", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.CheckBox("isResetPassword")
+        </div>
+    </div>
+    @if (ViewBag.RolesList != null && ViewBag.RolesList.Count > 0)
+    {
+        <div class="form-group">
+            @Html.Label("Phân quyền", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var role in ViewBag.RolesList)
+                {
+                    <div><label><input type="checkbox" class="role" name="@role.Id" value="@role.Name" @(role.IsGranted ? "checked" : "")> @role.DisplayedName</label></div>
+                }
+            </div>
+        </div>
+    }
+
+    @Html.Hidden("roleString", "", new { id = "roleString" })
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('.role').on('change', function () {
+                getCheckedRoles();
+            });
+        });
+        function getCheckedRoles() {
+            var roleString = '';
+            $('.role:checked').each(function (i, item) {
+                if (i != 0) roleString += ',';
+                roleString += $(item).val();
+            });
+
+            $('#roleString').val(roleString);
+        }
+    </script>
 }

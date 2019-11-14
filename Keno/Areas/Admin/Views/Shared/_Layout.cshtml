@@ -144,38 +144,59 @@
                 </li>
                 @if (User.IsInRole("Admin"))
                 {
-                                    <li class="">
-                    <a href="@Url.Action("Index", "Advertisement")">
-                        <i class="menu-icon fa fa-bolt"></i>
-                        <span class="menu-text">Quảng cáo</span>
-                    </a>
+                    <li class="">
+                        <a href="@Url.Action("Index", "Advertisement")">
+                            <i class="menu-icon fa fa-bolt"></i>
+                            <span class="menu-text">Quảng cáo</span>
+                        </a>
 
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a href="@Url.Action("Index", "Offer")">
-                        <i class="menu-icon fa fa-star"></i>
-                        <span class="menu-text">Mã giảm giá</span>
-                    </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-star"></i>
+                            <span class="menu-text">
+                                Mã giảm giá
+                            </span>
 
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a href="@Url.Action("Index", "User")">
-                        <i class="menu-icon fa fa-user"></i>
-                        <span class="menu-text">Tài khoản người dùng</span>
-                    </a>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
 
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a href="@Url.Action("Index", "Statistics", new { productID = 0 })">
-                        <i class="menu-icon fa fa-line-chart"></i>
-                        <span class="menu-text">Thống kê</span>
-                    </a>
+                        <b class="arrow"></b>
 
-                    <b class="arrow"></b>
-                </li>
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="@Url.Action("Index", "Offer")">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Danh sách mã giảm giá
+                                    <b class="arrow"></b>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Áp dụng
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index", "User")">
+                            <i class="menu-icon fa fa-user"></i>
+                            <span class="menu-text">Tài khoản người dùng</span>
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index", "Statistics", new { productID = 0 })">
+                            <i class="menu-icon fa fa-line-chart"></i>
+                            <span class="menu-text">Thống kê</span>
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
                 }
             </ul>
 

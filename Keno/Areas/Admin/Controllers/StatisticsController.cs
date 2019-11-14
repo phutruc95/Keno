@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Keno.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class StatisticsController : Controller
     {
         private KenoContext db = new KenoContext();

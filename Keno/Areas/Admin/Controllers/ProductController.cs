@@ -15,7 +15,7 @@ using PagedList;
 
 namespace Keno.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin, Vendor")]
+    [Authorize(Roles = "Admin, SuperAdmin, Vendor")]
     public class ProductController : Controller
     {
         private KenoContext db = new KenoContext();
@@ -146,6 +146,13 @@ namespace Keno.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb(Url.Action("Index"), "Sản phẩm"),
+                new Breadcrumb("#", "Xóa")
+            };
+
             return View(product);
         }
 

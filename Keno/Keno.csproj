@@ -228,6 +228,7 @@
     <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="ViewModel\Breadcrumb.cs" />
     <Compile Include="ViewModel\Email.cs" />
+    <Compile Include="ViewModel\RoleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\Chart.min.css" />
@@ -411,6 +412,7 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\User\ReviewPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\keno - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Keno - FTP.pubxml" />

@@ -12,7 +12,7 @@ using Keno.Repository;
 
 namespace Keno.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class ProductTypeController : Controller
     {
         private KenoContext db = new KenoContext();
@@ -121,6 +121,13 @@ namespace Keno.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb(Url.Action("Index"), "Loại sản phẩm"),
+                new Breadcrumb("#", "Xóa")
+            };
+
             return View(producttype);
         }
 
