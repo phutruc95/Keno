@@ -15,10 +15,13 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="advertise-brick" style="height: 250px; background-image: url('@Url.Content(Model.Image)'), url('@Url.Content("~/Content/Images/no-image-available.jpg")'); background-size: contain"></div>
-                    <div>MÃ GIẢM GIÁ</div>
-                    @foreach (var salecode in lstSaleCodes)
+                    @if (lstSaleCodes != null && lstSaleCodes.Count > 0)
                     {
-                        <div><b>@salecode.Code</b><span>: - @salecode.Percent %</span></div>
+                        <div>MÃ GIẢM GIÁ</div>
+                        foreach (var salecode in lstSaleCodes)
+                        {
+                            <div><b>@salecode.Code</b><span style="color: red;"> (Giảm @salecode.Percent %)</span></div>
+                        }
                     }
                 </div>
                 <div class="col-md-7">
@@ -42,9 +45,9 @@
                     <p class="product-shortdesc">
                         @Model.ShortDesc
                     </p>
-                    <div class="author">Người đăng: admin</div>
+                    <div class="author">Người đăng: @Model.UploaderID</div>
                     <div class="text-center details-btn">
-                        <span><button class="btn btn-default">Đánh giá</button></span>
+                        <span><button class="btn btn-default" onclick="alert('Chức năng đang phát triển')">Đánh giá</button></span>
                         <span><button id="btn-purchase" class="btn btn-success">Mua hàng</button></span>
                     </div>
                 </div>

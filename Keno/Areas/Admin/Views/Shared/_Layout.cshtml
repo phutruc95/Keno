@@ -89,12 +89,12 @@
 
     <div class="main-container ace-save-state" id="main-container">
         <script type="text/javascript">
-				try{ace.settings.loadState('main-container')}catch(e){}
+            try { ace.settings.loadState('main-container') } catch (e) { }
         </script>
 
         <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
             <script type="text/javascript">
-					try{ace.settings.loadState('sidebar')}catch(e){}
+                try { ace.settings.loadState('sidebar') } catch (e) { }
             </script>
 
             <ul class="nav nav-list">
@@ -142,7 +142,7 @@
                         }
                     </ul>
                 </li>
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
                 {
                     <li class="">
                         <a href="@Url.Action("Index", "Advertisement")">
@@ -151,35 +151,6 @@
                         </a>
 
                         <b class="arrow"></b>
-                    </li>
-                    <li class="">
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-star"></i>
-                            <span class="menu-text">
-                                Mã giảm giá
-                            </span>
-
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-
-                        <b class="arrow"></b>
-
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="@Url.Action("Index", "Offer")">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh sách mã giảm giá
-                                    <b class="arrow"></b>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Áp dụng
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
                     </li>
                     <li class="">
                         <a href="@Url.Action("Index", "User")">
@@ -198,6 +169,42 @@
                         <b class="arrow"></b>
                     </li>
                 }
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-star"></i>
+                        <span class="menu-text">
+                            Mã giảm giá
+                        </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                        {
+                            <li class="">
+                                <a href="@Url.Action("Index", "Offer")">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Danh sách mã giảm giá
+                                    <b class="arrow"></b>
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin") || User.IsInRole("Vendor"))
+                        {
+                            <li class="">
+                                <a href="@Url.Action("OfferApplication", "Offer")">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Áp dụng
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                        }
+                    </ul>
+                </li>
             </ul>
 
             <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -262,7 +269,10 @@
         <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
             <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
         </a>
-    </div><!-- /.main-container -->
+    </div>
+    <div class="loading" style="display: none;"></div>
+
+    <!-- /.main-container -->
     <!-- basic scripts -->
     <!--[if !IE]> -->
     <script src="~/assets/js/jquery-2.1.4.min.js"></script>
@@ -272,7 +282,7 @@
     <script src="assets/js/jquery-1.11.3.min.js"></script>
     <![endif]-->
     <script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+        if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
     <script src="~/assets/js/bootstrap.min.js"></script>
 

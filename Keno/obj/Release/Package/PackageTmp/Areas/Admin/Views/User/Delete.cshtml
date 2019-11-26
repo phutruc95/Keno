@@ -1,0 +1,17 @@
+﻿@model Keno.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Bạn có chắc chắn muốn xóa người dùng "@Model.UserName"?</h4>
+<div>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>

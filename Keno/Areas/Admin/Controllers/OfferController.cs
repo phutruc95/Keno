@@ -13,7 +13,7 @@ using System.IO;
 
 namespace Keno.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin, SuperAdmin")]
+    [Authorize(Roles = "Admin, SuperAdmin, Vendor")]
     public class OfferController : Controller
     {
         private KenoContext db = new KenoContext();
@@ -31,6 +31,7 @@ namespace Keno.Areas.Admin.Controllers
 
 
         // GET: /Admin/Offer/Create
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Create()
         {
             ViewBag.Breadcrumb = new List<Breadcrumb>
@@ -45,6 +46,7 @@ namespace Keno.Areas.Admin.Controllers
         // POST: /Admin/Offer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, SuperAdmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Percent,OverduedDate,Desc,Image,CoinsConsumed")] Offer offer, HttpPostedFileBase imgFile)
@@ -67,6 +69,7 @@ namespace Keno.Areas.Admin.Controllers
         }
 
         // GET: /Admin/Offer/Delete/5
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -89,6 +92,7 @@ namespace Keno.Areas.Admin.Controllers
         }
 
         // POST: /Admin/Offer/Delete/5
+        [Authorize(Roles = "Admin, SuperAdmin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -107,6 +111,65 @@ namespace Keno.Areas.Admin.Controllers
             db.Offers.Remove(offer);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: /Admin/Offer/OfferApplication
+        [HttpGet]
+        [Authorize(Roles = "Admin, SuperAdmin, Vendor")]
+        public ActionResult OfferApplication()
+        {
+            ViewBag.Breadcrumb = new List<Breadcrumb>
+            {
+                new Breadcrumb(Url.Action("Index"), "Mã giảm giá"),
+                new Breadcrumb("#", "Áp dụng")
+            };
+
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin, SuperAdmin, Vendor")]
+        public JsonResult CheckOfferCode(string code)
+        {
+            try
+            {
+                SaleCode saleCode = db.SaleCodes.Find(code);
+                if (saleCode != null)
+                {
+                    return Json(new { IsSuccessful = 1, Percent = saleCode.Percent, Msg = string.Empty });
+                }
+                else
+                {
+                    return Json(new { IsSuccessful = 0, Msg = "Mã giảm giá không đúng hoặc đã được sử dụng!"});
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccessful = 0, Msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin, SuperAdmin, Vendor")]
+        public JsonResult ApplySaleCode(string code)
+        {
+            try
+            {
+                SaleCode saleCode = db.SaleCodes.Find(code);
+
+                if (saleCode != null)
+                {
+                    db.SaleCodes.Remove(saleCode);
+                    db.SaveChanges();
+                    return Json(new { IsSuccessful = 1 });
+                }
+
+                else return Json(new { IsSuccessful = 0 });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsSuccessful = 0 });
+            }
         }
 
         protected override void Dispose(bool disposing)

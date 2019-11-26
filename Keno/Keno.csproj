@@ -413,6 +413,7 @@
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\User\ReviewPassword.cshtml" />
     <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Offer\OfferApplication.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\keno - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Keno - FTP.pubxml" />
@@ -421,6 +422,9 @@
     <None Include="Properties\PublishProfiles\keno - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Keno - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\keno - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\keno2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\keno2 - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\keno2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
