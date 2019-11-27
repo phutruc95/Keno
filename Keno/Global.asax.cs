@@ -38,6 +38,13 @@ namespace Keno
             }
 
             db.SaveChanges();
+
+            var themeSetting = db.AppSettings.Find("Theme");
+            if (themeSetting != null)
+            {
+                HttpCookie themeCookie = new HttpCookie("Theme", themeSetting.Value);
+                Response.Cookies.Add(themeCookie);
+            }
         }
     }
 }

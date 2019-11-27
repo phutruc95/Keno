@@ -48,3 +48,4 @@ D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Updatesal
 D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Addattendanceandupdatesalecode.resources
 D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.AddUserProperty.resources
 D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.Updatesalecodesasafieldofuserproperty.resources
+D:\Project\Keno\Keno.Repository\obj\Release\Keno.Repository.Migrations.AddAppSetting.resources

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Chủ đề";
+}
+
+<form>
+    <input type="radio" name="theme" id="christmas" value="Christmas"><span><label for="christmas">Giáng sinh</label></span><br />
+    <input type="radio" name="theme" id="none" value=""><span><label for="none">Không</label></span><br />
+
+    <div>
+        <input id="btn-apply" type="button" class="btn btn-primary" value="Áp dụng" />
+    </div>
+</form>
+
+@section scripts{
+    <script>
+        $(document).ready(function(){
+            $('#btn-apply').on('click', function () {
+                setTheme();
+            });
+        });
+
+        function setTheme() {
+            var theme = $('input[name=theme]:checked');
+            if (theme.length > 0) {
+                $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("SetTheme", "Theme")',
+                data: JSON.stringify({ theme: $(theme).val() }),
+                beforeSend: function () {
+                    $('.loading').show();
+                },
+                success: function (response) {
+                    if (response.IsSuccessful == 1) {
+                        alert("Đã đổi chủ đề!");
+                    }
+                    else {
+                        alert(response.Msg);
+                    }
+                },
+                error: function (err) {
+                    alert(err.msg);
+                },
+                complete: function () {
+                    $('.loading').hide();
+                }
+            });
+            }
+        };
+    </script>    
+}

@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201911101635354_Update sale codes as a field of user property.Designer.cs">
       <DependentUpon>201911101635354_Update sale codes as a field of user property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911271001442_Add AppSetting.cs" />
+    <Compile Include="Migrations\201911271001442_Add AppSetting.Designer.cs">
+      <DependentUpon>201911271001442_Add AppSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911101635354_Update sale codes as a field of user property.resx">
       <DependentUpon>201911101635354_Update sale codes as a field of user property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911271001442_Add AppSetting.resx">
+      <DependentUpon>201911271001442_Add AppSetting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

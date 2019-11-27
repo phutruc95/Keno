@@ -23,5 +23,6 @@ namespace Keno.Repository
         public DbSet<Statistics> Statistics { get; set; }
         public DbSet<SaleCode> SaleCodes { get; set; }
         public DbSet<UserProperty> UserProperties { get; set; }
+        public DbSet<AppSetting> AppSettings { get; set; }
     }
 }

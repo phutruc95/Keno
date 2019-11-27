@@ -209,7 +209,7 @@
                 success: function (response) {
                     updateSales(response.leftcoins);
                 },
-                error: function (error) {
+                error: function (err) {
                     alert(err.msg);
                     $('#leftcoins').slideDown();
                 },
